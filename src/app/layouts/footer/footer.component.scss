@@ -1,0 +1,108 @@
+$colfooer:#BDBDBD;
+$colfothover: #fe7900;
+.footer{
+    width: 100%;
+    background-image: url(./../../../assets/img/footer_bg.png);
+    color: $colfooer !important;
+    .h{
+        padding-bottom: 2%;
+        color: white;
+    }
+    .top__footer{
+        padding: 8% 0%;
+        .infor{
+            .iconrow{
+                padding: auto;
+                .icon{
+                    color: $colfooer;
+                    background: #484d51 none repeat scroll 0 0;
+                    height: 42px;
+                    width: 42px;
+                    border-radius: 50%;
+                    font-size: 20px;
+                    text-align: center;
+                    padding-top: 5px;
+                    padding: auto;
+                    margin-right: 10px;
+                }
+                .icon:hover{
+                    background: $colfothover none repeat scroll 0 0;
+                    i{
+                        color: white;
+                    }
+                }
+            }
+        }
+        .cus-ser{
+            .nav-item{
+                padding: auto;
+                .nav-link{
+                    color: $colfooer;
+                    font-size: 15px;
+                }
+                .nav-link:hover{
+                    color: $colfothover;
+                }
+            }
+        }
+        .rec-pos{
+            .new{
+                margin-bottom: 10px;
+                .title{
+                    margin-bottom: 0px !important;
+                    a{
+                        color: $colfooer;
+                    }
+                    a:hover{
+                        color: $colfothover;
+                        text-decoration: none;
+                    }
+                }
+                // .detail{
+                  
+                // }
+            }
+        }
+        .cont-us{
+            .phone{
+                span{
+                    color: $colfothover;
+                }
+            }
+        }
+        .formemail{
+            .inputmail{
+                border: transparent !important;
+                background: rgba(255, 255, 255, 0.3) none repeat scroll 0 0;
+            }
+            .inputmail::placeholder{
+                color: white;
+            }
+            .submit{
+                background: rgba(255, 255, 255, 0.3) none repeat scroll 0 0;
+                border: transparent !important;
+            }
+        }
+    }
+    .bot__footer{
+        color:#666 !important;
+        .copy{
+            padding: 1.2% 0%;
+            .right{
+                p{
+                    padding: 8px 16px;
+                }
+            }
+            .left{
+                .nav-link{
+                    color: #666;
+                }
+                .nav-link:hover{
+                    color: $colfothover !important;
+                }
+               
+            }
+        }
+       
+    }
+}
