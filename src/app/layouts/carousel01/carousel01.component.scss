@@ -21,6 +21,7 @@
       .carousel01-left-container {
         h2 {
           font-size: 50px;
+          font-weight: bold;
           margin: 20px 0 5px 5px;
           span {
             color: orangered !important;
@@ -29,6 +30,7 @@
         > p {
           text-align: right;
           &:nth-child(2) {
+            font-weight: bold;
             margin: 0 50px 10px  0 !important;
             font-size: 22px;
           }
