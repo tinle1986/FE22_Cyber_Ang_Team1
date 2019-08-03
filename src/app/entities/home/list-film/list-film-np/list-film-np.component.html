@@ -1,0 +1,46 @@
+<div class="main">
+    <div class="content">
+        <section class="header">
+            <div class="header-detail">
+                <div class="container">
+                    <p class="title">Now Playing</p>
+                </div>
+            </div>
+        </section>
+        <section class="body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="page-content">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-12"
+                                        *ngFor="let item of listFilm | paginate: { itemsPerPage: 3, currentPage: p } ">
+                                        <app-film [film]="item">
+
+                                        </app-film>
+                                    </div>
+                                    <pagination-controls class="paging" (pageChange)="p = $event"></pagination-controls>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <app-ads-and-infor></app-ads-and-infor>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+</div>

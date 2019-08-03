@@ -1,0 +1,14 @@
+<div class="row pb-3 pt-1">
+    <div class="col-sm-12 details">
+        <div class="detail">
+            <div class="img1">
+                <img [src]="film.hinhAnh" alt="Card image">
+            </div>
+            <h6 class="namefilm">{{film.tenPhim}}</h6>
+            <p class="datefilm">{{film.ngayKhoiChieu|date: 'dd-MM-yyyy'}}</p>
+        </div>
+        <div class="rate">
+            <span>{{film.danhGia}}<i class="fas fa-star size"></i></span>
+        </div>
+    </div>
+</div>

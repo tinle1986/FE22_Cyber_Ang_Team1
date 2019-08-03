@@ -1,0 +1,47 @@
+$black: black;
+$white: white;
+$colormain:#fe7900;
+.main{
+    .content{
+        .header{
+            padding-bottom: 2%;
+            .header-detail{
+                background-color: $black;
+                .title{
+                    color: $white;
+                    padding: 7% 0%;
+                    font-size: 35px;
+                    font-weight: 600;
+                    
+                
+                }
+            }
+        }
+        .body{
+           .row{
+               .paging{
+                   border: solid transparent 1px !important;  
+                   font-size: 18px !important; 
+                   padding: 2% 20% !important;
+                   margin: auto !important;
+                   .ngx-pagination .current{
+                       background-color: $colormain;
+
+
+                   }
+               }
+           }
+           .backnow{
+               #back-to-top {
+                cursor: pointer;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #189EFF;
+                color: #fff;
+                padding: 15px;
+               }
+           }
+        }
+    }
+}

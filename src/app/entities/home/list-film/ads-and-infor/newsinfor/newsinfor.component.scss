@@ -1,0 +1,26 @@
+.details{
+    padding: 3% 0%;
+    .HinhAnh{
+        img{
+            width: 100%;
+        }
+    }
+    .infor{
+        h6{
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+            a{
+                color: black;
+            }
+            a:hover{
+                color: #fe7900;
+            }
+        }
+        
+        span{
+            color: #999;
+            font-size: 13px;
+            font-style: italic;
+        }
+    }
+}

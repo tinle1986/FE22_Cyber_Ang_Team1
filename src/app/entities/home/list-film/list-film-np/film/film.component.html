@@ -1,0 +1,15 @@
+<div class="row pb-3 pt-1">
+    <div class="col-sm-4">
+        <img [src]="film.hinhAnh" alt="Card image">
+    </div>
+    <div class="col-sm-8 infor">
+        <h4 class="namefilm">{{film.tenPhim}}</h4>
+        <div class="start-rate">
+                <span *ngFor="let item of starArr "><i class="fas fa-star star"></i></span>
+        </div>
+        <p class="pt-2"><span>Mô Tả: </span>{{film.moTa}}</p>
+        <p><span>Ngày Khởi Chiếu:</span> {{film.ngayKhoiChieu | date: 'dd-MM-yyyy'}}</p>
+        <a href="{{film.trailer}}" class="btn btn-primary">Trailer</a>
+        <button class="ml-1 btn btn-success">Đặt Vé</button>
+    </div>
+</div>
