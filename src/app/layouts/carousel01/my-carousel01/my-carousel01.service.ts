@@ -81,14 +81,16 @@ export class MyCarousel01Service {
     this.dir = params.dir || "ltr";
     /* this.width = params.width || 360;
     this.height = params.height || 270; */
-    this.width = params.width || 230;
-    this.height = params.height || 340;
+    /* this.width = params.width || 230;
+    this.height = params.height || 340; */
+    this.width = params.width || 200;
+    this.height = params.height || 300;
     this.border = params.border || 0;
     this.space = params.space || "auto";
     this.topSpace = params.topSpace || "auto";
     this.controls = params.controls || false;
     this.startSlide = params.startSlide || 0;
-    this.inverseScaling = params.inverseScaling || 300;
+    this.inverseScaling = params.inverseScaling || 300;   // tỉ lệ theo z-index
     this.autoRotationSpeed = params.autoRotationSpeed || 0;
 
     this.state = this.states.PENDING;
