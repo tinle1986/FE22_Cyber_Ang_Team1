@@ -1,0 +1,17 @@
+$colormain: #fe7900;
+.infor{
+    .namefilm{
+       font-size: 20px;
+       text-decoration: underline;
+       font-weight: 700 !important;
+    }
+    .start-rate{
+        color: $colormain;
+    }
+    p{
+        span{
+            font-weight: 500;
+        }
+    
+    }
+}

@@ -4,14 +4,17 @@ import { HomeComponent } from './home.component';
 
 
 const routes: Routes = [
-    {
-        path:"",
-        component:HomeComponent,
-    }
+  {
+    path: "",
+    component: HomeComponent,
+    children: [
+      { path: "list-film", loadChildren: "./list-film/list-film.module#ListFilmModule" },
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomeRoutingModule {}
+export class HomeRoutingModule { }

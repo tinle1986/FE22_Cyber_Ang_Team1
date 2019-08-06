@@ -1,0 +1,33 @@
+<div class="AdsAndInfor">
+    <div class="Hinh">
+        <img src="./../../../../../assets/img/img_62.png" alt="HinhLoGo">
+    </div>
+    <div class="Comingsoon container">
+        <div class="CS_content">
+            <h4>
+                Coming Soon
+            </h4>
+            <div class="CS_list">
+                <ol>
+                    <a href="#123"> <li>Spider Man: Far From Home</li> </a>
+                    <a href="#123"> <li>Black Window</li> </a>
+                    <a href="#123"> <li>Fast And Furious 9</li> </a>
+                    <a href="#123"> <li>Avengers: EndGame </li> </a>
+                    <a href="#123"> <li>Aquaman</li> </a>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+    <div class="News container">
+        <div class="News-infor">
+            <h4>Recent Posts</h4>
+            <div class="news" *ngFor="let item of FilmNewsList">
+                <app-newsinfor [news]="item" ></app-newsinfor>    
+            </div>
+        </div>
+    </div>
+    <div class="Hinh">
+        <img src="./../../../../../assets/img/img_63.png" alt="HinhLoGo">
+    </div>
+</div>
