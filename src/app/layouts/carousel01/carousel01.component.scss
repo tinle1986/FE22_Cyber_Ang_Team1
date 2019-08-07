@@ -1,0 +1,84 @@
+.slide-img {
+  width: 100%;
+  height: 100%;
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, right top, right
+        bottom, from(transparent), to(rgba(255, 255, 255, 0.4)));
+}
+
+.my-carousel-container {
+  background-image: url(http://demo.amytheme.com/movie/home-5/wp-content/uploads/2018/09/h5bg-ss1.jpg?id=409) !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  width: 100%;
+  padding: 70px 100px 70px;
+  .my-carousel-content {
+    margin: 0px -15px;
+    .carousel01-left {
+      width: 100%;
+      margin: auto;
+      color: white;
+      .carousel01-left-container {
+        h2 {
+          font-size: 50px;
+          font-weight: bold;
+          margin: 20px 0 5px 5px;
+          span {
+            color: orangered !important;
+          }
+        }
+        > p {
+          text-align: right;
+          &:nth-child(2) {
+            font-weight: bold;
+            margin: 0 50px 10px  0 !important;
+            font-size: 22px;
+          }
+          &:nth-child(3) {
+            margin: 0 60px 20px 0 !important;
+            font-size: 16px;
+          }
+          &:nth-child(4) {
+            text-align: center !important;
+            margin: 0 0 10px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .carousel01-right {
+      width: 100%;
+      margin: auto;
+    }
+  }
+}
+
+.wr-disco-button {
+  text-align: center;
+  .disco-button {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none !important;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    line-height: 1.5;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+    padding: 10px 30px 9px;
+    margin: 0 5px 5px 0;
+    width: auto;
+    text-transform: uppercase;
+    border-radius: 50px;
+    border: none;
+    background: -webkit-gradient(linear, left top, right top, from(#bb511e), to(#f1bc00));
+    background: linear-gradient(to right, #bb511e, #f1bc00);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+}
