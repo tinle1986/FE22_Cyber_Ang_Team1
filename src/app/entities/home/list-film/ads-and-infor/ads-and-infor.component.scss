@@ -1,0 +1,45 @@
+.AdsAndInfor{
+    .Hinh{
+        border: solid transparent 1px;
+        padding: 5% 5%;
+
+    }
+    .Comingsoon{
+        border: solid transparent 1px;
+        .CS_content{
+            background-color: black;
+            h4{
+                color: #fe7900;
+                text-align: center;
+                padding-top: 4%;
+            }
+        }
+        .CS_list{
+            ol{
+                padding-top: 0%;
+                a{
+                   border: solid transparent 1px; 
+                   text-decoration: none;
+                   li{
+                    color: #666;
+                   }
+                   li:hover{
+                    color:#fe7900; 
+                   }
+                }
+            }
+           
+        }
+
+    }
+    .News{
+        .News-infor{
+            h4{
+                color: #fe7900;
+            }
+        }
+
+    }
+
+
+}
