@@ -59,7 +59,10 @@ export class MyCarousel01Component implements OnInit, OnDestroy, OnChanges {
   // constructor() {}
 
   ngOnInit() {
-    this.buildCarousel(this.slides, this.options);
+    // if (this.slides) {
+      this.buildCarousel(this.slides, this.options);
+    // }
+    
   }
 
   buildCarousel(slides, options) {
@@ -143,7 +146,7 @@ export class MyCarousel01Component implements OnInit, OnDestroy, OnChanges {
         "border-width": this.carousel3d.border + "px",
         width: outerWidth + "px",
         // height: outerHeight + "px"
-        height: 340 + "px"
+        height: 320 + "px"
       };
 
       if (animate) {

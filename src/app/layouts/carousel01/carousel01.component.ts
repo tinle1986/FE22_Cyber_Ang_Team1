@@ -18,22 +18,25 @@ export class Carousel01Component implements OnInit {
 
   @ViewChild("carousel01", { static: false }) carousel01: any;
 
+  // const arr = Array(6).fill({})
+  // slides = Array(0).fill({});
+
   slides: Array<object> = [
-    // { src: "./assets/img/phim_1.jpg" },
-    // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
-    // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
-    // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
-    // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
-    // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
-    // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
-    // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
-    { src: "" },
-    { src: "" },
-    { src: "" },
-    { src: "" },
-    { src: "" },
-    { src: "" },
-    { src: "" }
+  { src: "./assets/img/phim_1.jpg" },
+  { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
+  { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
+  { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
+  { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
+  { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
+  { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
+  // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
+  // { src: "" },
+  // { src: "" },
+  // { src: "" },
+  // { src: "" },
+  // { src: "" },
+  // { src: "" },
+  // { src: "" }
   ];
 
   options: Object = {
@@ -66,19 +69,20 @@ export class Carousel01Component implements OnInit {
       this.movieList = data;
       this.sharingData01Service.sharingMovieListData(data);
       for (let item of this.movieList) {
+        // let objImg = { src: item.hinhAnh.toString() };
+        // this.slides.push(objImg);
         this.imgList.push(item.hinhAnh.toString());
       }
-        this.slides[0] = { src: this.imgList[0] };
-        this.slides[1] = { src: this.imgList[1] };
-        this.slides[2] = { src: this.imgList[2] };
-        this.slides[3] = { src: this.imgList[3] };
-        this.slides[4] = { src: this.imgList[4] };
-        this.slides[5] = { src: this.imgList[5] };
-        this.slides[6] = { src: this.imgList[6] };
-        console.log(this.slides);
+      // this.slides[0] = { src: this.imgList[0] };
+      // this.slides[1] = { src: this.imgList[1] };
+      // this.slides[2] = { src: this.imgList[2] };
+      // this.slides[3] = { src: this.imgList[3] };
+      // this.slides[4] = { src: this.imgList[4] };
+      // this.slides[5] = { src: this.imgList[5] };
+      // this.slides[6] = { src: this.imgList[6] };
+      console.log(this.slides);
       console.log(this.movieList);
       console.log(this.imgList);
-      
     });
   }
 
