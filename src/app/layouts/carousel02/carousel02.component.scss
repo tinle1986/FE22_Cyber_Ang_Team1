@@ -1,0 +1,138 @@
+// canh vị trí left và right cho 2 nút điều hướng
+.carousel-control-prev {
+  left: -10%;
+  top: 40%;
+  width: 20px;
+  height: 50px;
+}
+.carousel-control-next {
+  right: -10%;
+  top: 40%;
+  width: 20px;
+  height: 50px;
+}
+
+// .arrow-left {
+//   width: 0;
+//   height: 0;
+//   border-top: 10px solid transparent;
+//   border-bottom: 10px solid transparent;
+
+//   border-right: 10px solid blue;
+// }
+
+
+// định dạng nút điều hướng hình mũi tên left, right
+.carousel-control-prev-icon {
+  // height: 100px;
+  // width: 100px;
+  // outline: blue;
+  // background-color: blue;
+  // background-size: 100%, 100%;
+  // border-radius: 50%;
+  // border: 1px solid blue;
+  // background-image: none;
+
+  // color: black !important;
+  // font-size: 50px;
+  // border-top: 100px solid transparent;
+  // border-bottom: 100px solid transparent;
+
+  // border-right: 100px solid blue;
+
+  // border-top: 15px solid transparent;
+  // border-bottom: 15px solid transparent;
+  // border-right: 15px solid gray;
+
+  border: solid gray;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+.carousel-control-next-icon {
+  // height: 100px;
+  // width: 100px;
+  // outline: blue;
+  // background-color: blue;
+  // background-size: 100%, 100%;
+  // border-radius: 50%;
+  // border: 1px solid blue;
+  // background-image: none;
+
+  // border-top: 15px solid transparent;
+  // border-bottom: 15px solid transparent;
+  // border-left: 15px solid gray;
+
+  border: solid gray;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+// .carousel-control-next-icon:after {
+//   content: ">";
+//   font-size: 55px;
+//   color: whitesmoke;
+// }
+
+// .carousel-control-prev-icon:after {
+//   content: "<";
+//   font-size: 55px;
+//   color: whitesmoke;
+// }
+
+
+//////////////////////////////// CSS cho phần chia 5 phần tử
+// .col-2dot4,
+// .col-sm-2dot4,
+// .col-md-2dot4,
+// .col-lg-2dot4,
+// .col-xl-2dot4 {
+//   position: relative;
+//   width: 100%;
+//   min-height: 1px;
+//   padding-right: 15px;
+//   padding-left: 15px;
+// }
+// .col-2dot4 {
+//   -webkit-box-flex: 0;
+//   -ms-flex: 0 0 20%;
+//   flex: 0 0 20%;
+//   max-width: 20%;
+// }
+// @media (min-width: 540px) {
+//   .col-sm-2dot4 {
+//     -webkit-box-flex: 0;
+//     -ms-flex: 0 0 20%;
+//     flex: 0 0 20%;
+//     max-width: 20%;
+//   }
+// }
+// @media (min-width: 720px) {
+//   .col-md-2dot4 {
+//     -webkit-box-flex: 0;
+//     -ms-flex: 0 0 20%;
+//     flex: 0 0 20%;
+//     max-width: 20%;
+//   }
+// }
+// @media (min-width: 960px) {
+//   .col-lg-2dot4 {
+//     -webkit-box-flex: 0;
+//     -ms-flex: 0 0 20%;
+//     flex: 0 0 20%;
+//     max-width: 20%;
+//   }
+// }
+// @media (min-width: 1140px) {
+//   .col-xl-2dot4 {
+//     -webkit-box-flex: 0;
+//     -ms-flex: 0 0 20%;
+//     flex: 0 0 20%;
+//     max-width: 20%;
+//   }
+// }

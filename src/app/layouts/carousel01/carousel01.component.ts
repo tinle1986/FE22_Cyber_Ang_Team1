@@ -19,16 +19,22 @@ export class Carousel01Component implements OnInit {
   @ViewChild("carousel01", { static: false }) carousel01: any;
 
   // const arr = Array(6).fill({})
-  // slides = Array(0).fill({});
+  slides = Array(0).fill({});
 
-  slides: Array<object> = [
-  { src: "./assets/img/phim_1.jpg" },
-  { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
-  { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
-  { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
-  { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
-  { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
-  { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
+  // slides: Array<object> = [
+  // { src: "./assets/img/phim_1.jpg" },
+  // { src: "./assets/img/phim_2.jpg" },
+  // { src: "./assets/img/phim_3.jpg" },
+  // { src: "./assets/img/phim_4.jpg" },
+  // { src: "./assets/img/phim_5.jpg" },
+  // { src: "./assets/img/phim_6.jpg" },
+  // { src: "./assets/img/phim_7.jpg" },
+  // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
+  // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
+  // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
+  // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
+  // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
+  // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
   // { src: "http://movie0706.cybersoft.edu.vn/hinhanh/ted2.jpg"},
   // { src: "" },
   // { src: "" },
@@ -37,7 +43,7 @@ export class Carousel01Component implements OnInit {
   // { src: "" },
   // { src: "" },
   // { src: "" }
-  ];
+  // ];
 
   options: Object = {
     clicking: true,
@@ -50,7 +56,7 @@ export class Carousel01Component implements OnInit {
     width: 200,
     height: 300,
     space: 130,
-    autoRotationSpeed: 5000000,
+    autoRotationSpeed: 2000,
     loop: true
   };
 
@@ -64,8 +70,9 @@ export class Carousel01Component implements OnInit {
   }
 
   getMovieList() {
-    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP08";
+    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP09";
     this.subMovieList = this.dataService.get(uri).subscribe((data: any) => {
+      const step = Math.floor(Math.random() * 7) + 1;
       this.movieList = data;
       this.sharingData01Service.sharingMovieListData(data);
       for (let item of this.movieList) {
@@ -73,16 +80,18 @@ export class Carousel01Component implements OnInit {
         // this.slides.push(objImg);
         this.imgList.push(item.hinhAnh.toString());
       }
-      // this.slides[0] = { src: this.imgList[0] };
-      // this.slides[1] = { src: this.imgList[1] };
-      // this.slides[2] = { src: this.imgList[2] };
-      // this.slides[3] = { src: this.imgList[3] };
-      // this.slides[4] = { src: this.imgList[4] };
-      // this.slides[5] = { src: this.imgList[5] };
-      // this.slides[6] = { src: this.imgList[6] };
-      console.log(this.slides);
-      console.log(this.movieList);
-      console.log(this.imgList);
+
+      // cần check ngIf ngoai HTML để đảm bảo mảng có tồn tại
+      this.slides[0] = { src: this.imgList[0+step] };
+      this.slides[1] = { src: this.imgList[1+step] };
+      this.slides[2] = { src: this.imgList[2+step] };
+      this.slides[3] = { src: this.imgList[3+step] };
+      this.slides[4] = { src: this.imgList[4+step] };
+      this.slides[5] = { src: this.imgList[5+step] };
+      this.slides[6] = { src: this.imgList[6+step] };
+      // console.log(this.slides);
+      // console.log(this.movieList);
+      // console.log(this.imgList);
     });
   }
 

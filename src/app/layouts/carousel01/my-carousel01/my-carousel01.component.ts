@@ -177,7 +177,8 @@ export class MyCarousel01Component implements OnInit, OnDestroy, OnChanges {
         "-ms-transform": "none",
         transform: "none",
         left: slideLeft + "px",
-        top: slideTop + "px",
+        // sửa lỗi hình & bóng bị lệch khi chuyển động
+        top: slideTop + 10 + "px",
         width: outerWidth + "px",
         // height: outerHeight + "px",
         height: 370 + "px",
