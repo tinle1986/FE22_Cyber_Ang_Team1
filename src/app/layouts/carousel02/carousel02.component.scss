@@ -1,3 +1,28 @@
+.my-my {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.carousel02-header {
+  margin-bottom: 10px;
+}
+
+.carousel02-header-wrapper {
+  h2 {
+    margin: 0;
+    font-size: 35px;
+    font-weight: 700;
+    color: #202020;
+    span {
+      color: #fe7900;
+    }
+  }
+  p {
+    font-size: 15px;
+    text-align: center;
+  }
+}
+
 // canh vị trí left và right cho 2 nút điều hướng
 .carousel-control-prev {
   left: -10%;
@@ -12,6 +37,66 @@
   height: 50px;
 }
 
+img {
+  width: 100%;
+  height: 375px;
+}
+
+.card {
+  border: transparent;
+}
+
+.card-title {
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.card-body {
+  padding: 0.75rem;
+  height: 70px;
+}
+
+.team-info-item {
+  position: relative;
+  overflow: hidden;
+}
+.team-info-item > .info {
+  transform: translateY(100%);
+  transition: all 0.2s linear;
+  position: absolute;
+  background: orangered;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  p {
+    margin: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  button {
+    border: none;
+    background-color: orangered !important;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    margin: 10px auto;
+    width: 100%;
+  }
+}
+
+.team-info-item:hover .info {
+  transform: translateY(0%);
+}
+
+// .carousel-inner .carousel-item {
+//   transition: -webkit-transform 10s ease;
+//   transition: transform 10s ease;
+//   transition: transform 10s ease, -webkit-transform 10s ease;
+// }
+
 // .arrow-left {
 //   width: 0;
 //   height: 0;
@@ -20,7 +105,6 @@
 
 //   border-right: 10px solid blue;
 // }
-
 
 // định dạng nút điều hướng hình mũi tên left, right
 .carousel-control-prev-icon {
@@ -44,7 +128,7 @@
   // border-bottom: 15px solid transparent;
   // border-right: 15px solid gray;
 
-  border: solid gray;
+  border: solid orangered;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
@@ -65,13 +149,96 @@
   // border-bottom: 15px solid transparent;
   // border-left: 15px solid gray;
 
-  border: solid gray;
+  border: solid orangered;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
+
+// show play button overlay image
+.team-info-item-img-wrapper {
+  position: relative;
+  // margin-top: 50px;
+  width: 100%;
+  height: 375px;
+}
+
+.team-info-item-img-wrapper-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.5s ease;
+}
+
+.team-info-item-img-wrapper:hover .team-info-item-img-wrapper-overlay {
+  display: block;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.team-info-item-img-wrapper img {
+  position: absolute;
+  left: 0;
+}
+
+.team-info-item-img-wrapper-title {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 120px;
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #d4d4d4;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity top 0.5s ease;
+}
+
+.team-info-item-img-wrapper:hover .team-info-item-img-wrapper-title {
+  top: 50px;
+  opacity: 1;
+}
+
+.team-info-item-img-wrapper-button {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 150px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.team-info-item-img-wrapper-button a {
+  padding-top: 25px;
+  padding-left: 25px;
+  text-decoration: none;
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  color: orangered;
+  border: solid 1.5px orangered;
+  box-shadow: 0px 0px 40px orangered;
+  z-index: 1;
+
+  //new css for play button
+  border-radius: 50%;
+  i {
+    font-size: 30px;
+  }
+}
+
+.team-info-item-img-wrapper:hover .team-info-item-img-wrapper-button {
+  opacity: 1;
+}
+
+
 
 // .carousel-control-next-icon:after {
 //   content: ">";
@@ -84,7 +251,6 @@
 //   font-size: 55px;
 //   color: whitesmoke;
 // }
-
 
 //////////////////////////////// CSS cho phần chia 5 phần tử
 // .col-2dot4,

@@ -7,7 +7,7 @@ import { Carousel01Component } from "src/app/layouts/carousel01/carousel01.compo
 import { Carousel02Module } from "src/app/layouts/carousel02/carousel02.module";
 import { Carousel02Component } from "src/app/layouts/carousel02/carousel02.component";
 import { Carousel03Component } from "src/app/layouts/carousel03/carousel03.component";
-import { Carousel03Module } from 'src/app/layouts/carousel03/carousel03.module';
+import { Carousel03Module } from "src/app/layouts/carousel03/carousel03.module";
 @NgModule({
   declarations: [HeaderComponent, FooterComponent],
   exports: [

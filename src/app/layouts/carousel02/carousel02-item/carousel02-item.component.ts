@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-carousel02-item',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Carousel02ItemComponent implements OnInit {
 
+  @Input() movieItem: any;
+
   constructor() { }
 
   ngOnInit() {
+    // console.log(this.movieItem);
   }
 
 }
