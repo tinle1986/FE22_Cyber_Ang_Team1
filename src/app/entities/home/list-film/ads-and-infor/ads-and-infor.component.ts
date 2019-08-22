@@ -25,7 +25,7 @@ export class AdsAndInforComponent implements OnInit {
   getListFromShareData(){
     this.shareData.sharelistMovie.subscribe((data)=>{
       this.FilmList=data;
-      console.log(data);
+      // console.log(data);
       
     });
   }

@@ -10,6 +10,6 @@
         <p class="pt-2"><span>Mô Tả: </span>{{film.moTa}}</p>
         <p><span>Ngày Khởi Chiếu:</span> {{film.ngayKhoiChieu | date: 'dd-MM-yyyy'}}</p>
         <a href="{{film.trailer}}" class="btn btn-primary">Trailer</a>
-        <button class="ml-1 btn btn-success">Đặt Vé</button>
+        <button class="ml-1 btn btn-success" (click)="chitiet()">Đặt Vé</button>
     </div>
 </div>
