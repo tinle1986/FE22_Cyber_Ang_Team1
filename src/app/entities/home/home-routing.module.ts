@@ -9,6 +9,8 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       { path: "list-film", loadChildren: "./list-film/list-film.module#ListFilmModule" },
+      { path: "chitietphim", loadChildren: "./chitietphim/chitietphim.module#ChitietphimModule" },
+      { path: "tintuc",loadChildren:"./tintuc/tintuc.module#TintucModule"}
     ]
   }
 ];

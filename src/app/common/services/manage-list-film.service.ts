@@ -39,4 +39,18 @@ export class ManageListFilmService {
       )
     );
   }
+  getInforFilm(idfilm):Observable<any>{
+    const url=`http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${idfilm}`;
+    return this.http.get(url).pipe(
+      tap(
+        (data:any)=>{
+
+        },
+        catchError(err=>{
+          return this.handleErr(err);
+        })
+      )
+    );
+
+  }
 }
