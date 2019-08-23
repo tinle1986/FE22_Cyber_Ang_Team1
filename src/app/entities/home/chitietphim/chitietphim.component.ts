@@ -21,12 +21,13 @@ export class ChitietphimComponent implements OnInit {
 
   // Xử Lý Ngày Tháng Năm
   indexTabs: any;
-  cinemaName: string = '';
+  cinemaName: string = 'BHDStar';
   lichChieuofFilm: any = [];
   // filmsSameDay: any = [];
   listFilmOfCinema = [];
-  group_to_values:any=[];
-  groups:any= [];
+  group_to_values: any = [];
+  groups: any = [];
+  groupsofcinemadays: any = [];
 
 
 
@@ -96,10 +97,7 @@ export class ChitietphimComponent implements OnInit {
   getTabs(index) {
     this.indexTabs = index;
   }
-  getNameCinemaFromCinema(nameCinema) {
-    this.cinemaName = nameCinema;
-    console.log(nameCinema);
-  }
+
   getInformationFilm() {
     const uri = `QuanLyPhim/LayThongTinPhim?MaPhim=${this.iDfilm}`;
     this.dataser.get(uri).subscribe((data: any) => {
@@ -113,31 +111,77 @@ export class ChitietphimComponent implements OnInit {
       //     }
       //   }
       // }
-      console.log(this.lichChieuofFilm);
-      const group_to_values=this.lichChieuofFilm.reduce((obj,item)=>{
-        const date=item.ngayChieuGioChieu.split('T')[0];
-        obj[date]=obj[date] ||[];
-        obj[date].push(item);
-        return obj
-      },{});
-      console.log(group_to_values);
-      
-      this.groups=Object.keys(group_to_values).map(function(key){
-        return {ngayChieuGioChieu:key,lichChieuofFilm:group_to_values[key]};
-      })
-      console.log(this.groups); 
-      
-      const group_to_cinema=this.lichChieuofFilm.filter((item)=>{
-        
+                    // console.log(this.lichChieuofFilm);
+      // const group_to_values=this.lichChieuofFilm.reduce((obj,item)=>{
+      //   const date=item.ngayChieuGioChieu.split('T')[0];
+      //   obj[date]=obj[date] ||[];
+      //   obj[date].push(item);
+      //   return obj
+      // },{});
+      // console.log(group_to_values);
 
-      });
+      // this.groups=Object.keys(group_to_values).map(function(key){
+      //   return {ngayChieuGioChieu:key,lichChieuofFilm:group_to_values[key]};
+      // })
+      // console.log(this.groups); 
+
+      this.groups = this.lichChieuofFilm.reduce((obj, item) => {
+        const marap = item.thongTinRap.maHeThongRap;
+        obj[marap] = obj[marap] || [];
+        obj[marap].push(item);
+        return obj;
+      }, {});
+      console.log(this.groups);
+
+      // const group_to_cinema_day= Object.values(group_to_cinema).map(function(item){
+      //     return item.reduce((obj,item1)=>{
+      //     const date=item1.ngayChieuGioChieu.split('T')[0];
+      //     obj[date]=obj[date] ||[];
+      //     obj[date].push(item1);
+      //     return obj
+      //   },{});
+      // });
+
+
+
+
+      // const group_to_cinema_day=group_to_cinema[this.cinemaName].reduce((obj,item)=>{
+      //   const date=item.ngayChieuGioChieu.split('T')[0];
+      //   obj[date]=obj[date] ||[];
+      //   obj[date].push(item);
+      //   return obj
+      // },{});
+      // console.log(group_to_cinema_day);
+
     });
   }
-  getArrayCinemaToName(a: any = [],nameCinema){
-    return a.filter((item)=>{
-      return item.thongTinRap.maHeThongRap===nameCinema;
+  getNameCinemaFromCinema(nameCinema) {
+    const group_to_cinema_day = this.groups[nameCinema].reduce((obj, item) => {
+      const date = item.ngayChieuGioChieu.split('T')[0];
+      obj[date] = obj[date] || [];
+      obj[date].push(item);
+      return obj
+    }, {});
+    //  var mainArrays=[];
+    this.groupsofcinemadays = Object.keys(group_to_cinema_day).map(function (key) {
+      return { ngayChieuGioChieu: key, lichChieuofFilm: group_to_cinema_day[key] };
     });
+    console.log(this.groupsofcinemadays);
+
+
+
+
+    // for (const key in group_to_cinema_day) {
+    //   if (group_to_cinema_day.hasOwnProperty(key)) {
+    //     this.groupsofcinemadays.push(group_to_cinema_day[key]);
+    //   }
+    // }
+
+
+    this.cinemaName = nameCinema;
+    // console.log(nameCinema);
   }
-  
+
+
 
 }

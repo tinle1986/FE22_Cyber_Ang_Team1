@@ -1,0 +1,66 @@
+<div class="bg-dark my-carousel-container">
+  <div class="my-carousel-content">
+    <div class="row">
+      <div class="carousel01-left col-5">
+        <div class="carousel01-left-container">
+          <h2>WHAT'S ON <span>TODAY</span></h2>
+          <p>AT MOVIEZONE CINEMA & THEATRES!</p>
+          <p>All reserved seating - Choose your exact seat!</p>
+          <p class="wr-disco-button">
+            <a href="#fdaf" class="disco-button">DISCOVER NOW!</a>
+          </p>
+        </div>
+      </div>
+      <div class="carousel01-right col-7">
+        <ng-container *ngIf="slides?.length > 0">
+          <div class="row">
+            <app-my-carousel01
+              [slides]="slides"
+              [options]="options"
+              class="col-12"
+              #carousel01
+            >
+              <app-my-carousel01-slide
+                *ngFor="let slide of slides; let i = index"
+                (click)="slideClicked(i)"
+              >
+                <div class="wr-slide-img">
+                  <div class="slide-img-overlay-cover">
+                    <div class="overlay-link">
+                      <!-- canh giữa các nút -->
+                      <div
+                        class="overlay-text d-flex justify-content-center align-items-center"
+                      >
+                        <!-- <button
+                            type="button"
+                            class="btn btn-circle btn-lg"
+                          >
+                            <i class="fa fa-play"></i>
+                          </button> -->
+                        <!-- tạo nút bằng thẻ a -->
+                        <a
+                          href="https://www.google.com.vn"
+                          class="btn btn-circle mr-3 d-flex justify-content-center align-items-center"
+                          ><i class="fa fa-play"></i
+                        ></a>
+
+                        <!-- tạo nút bằng thẻ button -->
+                        <button type="button" class="btn btn-circle btn-lg">
+                          <i class="fa fa-link"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <img class="slide-img" src="{{ slide.hinhAnh }}" alt="" />
+                  </div>
+                </div>
+              </app-my-carousel01-slide>
+            </app-my-carousel01>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal of trailer player -->
+<app-player-modal></app-player-modal>
