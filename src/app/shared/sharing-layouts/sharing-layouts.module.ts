@@ -8,6 +8,7 @@ import { Carousel02Module } from "src/app/layouts/carousel02/carousel02.module";
 import { Carousel02Component } from "src/app/layouts/carousel02/carousel02.component";
 import { Carousel03Component } from "src/app/layouts/carousel03/carousel03.component";
 import { Carousel03Module } from "src/app/layouts/carousel03/carousel03.module";
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [HeaderComponent, FooterComponent],
   exports: [
@@ -17,6 +18,6 @@ import { Carousel03Module } from "src/app/layouts/carousel03/carousel03.module";
     Carousel02Component,
     Carousel03Component
   ],
-  imports: [CommonModule, Carousel01Module, Carousel02Module, Carousel03Module]
+  imports: [CommonModule, Carousel01Module, Carousel02Module, Carousel03Module, FormsModule]
 })
 export class SharingLayoutsModule {}

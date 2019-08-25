@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/shared/services/data.service';
+
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dataService: DataService
+  ) { }
 
   ngOnInit() {
+  }
+
+  login(value) {
+    // console.log(value);
+    const user =  {taiKhoan: value.userName, matKhau: value.password};
+    const uri = `QuanLyNguoiDung/DangNhap`;
+    this.dataService.post(uri, user).subscribe((data: any) => {
+      if(data === null) {
+        alert("Tài khoản không tồn tại.");
+      } else {
+        alert("Logged in succesfully");
+        localStorage.setItem("localUser", JSON.stringify(data));
+      }
+    });
   }
 
 }

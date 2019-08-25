@@ -1,5 +1,9 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse
+} from "@angular/common/http";
 import { Observable } from "rxjs";
 import { tap, catchError } from "rxjs/operators";
 import { environment } from "./../../../environments/environment";
@@ -22,30 +26,23 @@ export class DataService {
 
   get(uri: string): Observable<any> {
     return this.http.get(urlApi + "/" + uri).pipe(
-      tap(
-        () => {
-          // get successfully
-        },
-
-        catchError(err => {
-          // get failed
-          return this.handleErr(err);
-        })
-      )
+      tap(data => {
+        // get successfully
+      }),
+      catchError(err => {
+        // get failed
+        return this.handleErr(err);
+      })
     );
   }
 
   post(uri: string, data?: object): Observable<any> {
     return this.http.post(urlApi + "/" + uri, data, httpOptions).pipe(
-      tap(
-        () => {
-
-        },
-
-        catchError(err => {
-          return this.handleErr(err);
-        })
-      )
+      tap(data => {}),
+      catchError((err: HttpErrorResponse) => {
+        alert(err.error);
+        return this.handleErr(err);
+      })
     );
   }
 
