@@ -4,7 +4,7 @@ import {
   HttpHeaders,
   HttpErrorResponse
 } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { tap, catchError } from "rxjs/operators";
 import { environment } from "./../../../environments/environment";
 
@@ -38,9 +38,12 @@ export class DataService {
 
   post(uri: string, data?: object): Observable<any> {
     return this.http.post(urlApi + "/" + uri, data, httpOptions).pipe(
-      tap(data => {}),
+      tap(() => {
+        // get successfully
+      }),
       catchError((err: HttpErrorResponse) => {
-        alert(err.error);
+        // get failed
+        // alert(err.error)
         return this.handleErr(err);
       })
     );
@@ -48,6 +51,8 @@ export class DataService {
 
   // nhan tham so err return o tren
   handleErr(err) {
-    return err;
+    // console.log(err);
+    // sw
+    return throwError(err);
   }
 }
