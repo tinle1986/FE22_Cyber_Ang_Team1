@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild } from "@angular/core";
 
 @Component({
-  selector: 'app-sign-up-page',
-  templateUrl: './sign-up-page.component.html',
-  styleUrls: ['./sign-up-page.component.scss']
+  selector: "app-sign-up-page",
+  templateUrl: "./sign-up-page.component.html",
+  styleUrls: ["./sign-up-page.component.scss"]
 })
 export class SignUpPageComponent implements OnInit {
+  @ViewChild("registerForm", { static: false }) registerForm;
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  @HostListener("window: beforeunload", ["$event"])
+  canDeactivate($event): boolean {
+    return this.registerForm.submitted || !this.registerForm.dirty;
   }
-
 }
