@@ -61,21 +61,46 @@
                         <div class="row pt-2">
                             <div class="col-md-4">
                                 <p> <i class="fas fa-film"></i> SELECT A CINEMA</p>
-                                <ul class="nav flex-column" *ngFor="let cinema of cinemaplay;let i = index">
-                                    <app-cinema [cinema]="cinema" [i]="i" (eventTabs)="getTabs($event)" (eventNameCinema)="getNameCinemaFromCinema($event)">
+                                <ul class="nav flex-column row" *ngFor="let cinema of cinemaplay;let i = index">
+                                    <app-cinema [cinema]="cinema" [i]="i" (eventTabs)="getTabs($event)"
+                                        (eventNameCinema)="getNameCinemaFromCinema($event)">
 
                                     </app-cinema>
                                 </ul>
                             </div>
-                            <div class="col-md-8 pt-5">
+                            <div class="col-md-8 pt-3">
                                 <div class="tab-content">
-                                    <div class="tab-pane container active" id={{indexTabs}}>{{this.indexTabs}}
-                                        {{this.cinemaName}}
+                                    <div class="row">
+                                        <div class="tab-pane container active col-md-4" id={{indexTabs}}>
+                                            <!-- {{this.indexTabs}}
+                                            {{this.cinemaName}} -->
+                                            <ul class="nav nav-pills"
+                                                *ngFor="let item of groupsofcinemadays;let i=index">
+                                                <app-cinemadays [cinemadays]="item" [i]="i"
+                                                    (event)="getTabsAndArrayCinema($event)">
+                                                </app-cinemadays>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="tab-content">
+                                                <div class="tab-pane container active col-md-12" id={{indexTabs2}}>
+                                                    <div class="ShowInforCnmDay"
+                                                        *ngFor="let item of groupshowcinemaday">
+                                                        <app-itemcinema [hethongrap]="this.thongtincumrap"
+                                                            [itemcinema]="item">
 
-                                        
+                                                        </app-itemcinema>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
 
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -93,12 +118,7 @@
                         </div>
                         <div class="ShowComment">
                             <h3>Comment</h3>
-                           
-
-
                         </div>
-
-
                     </div>
                 </div>
                 <div class="col-md-4">

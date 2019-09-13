@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TintucComponent } from './tintuc.component';
+import { DatveComponent } from './datve.component';
 
-describe('TintucComponent', () => {
-  let component: TintucComponent;
-  let fixture: ComponentFixture<TintucComponent>;
+describe('DatveComponent', () => {
+  let component: DatveComponent;
+  let fixture: ComponentFixture<DatveComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TintucComponent ]
+      declarations: [ DatveComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TintucComponent);
+    fixture = TestBed.createComponent(DatveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

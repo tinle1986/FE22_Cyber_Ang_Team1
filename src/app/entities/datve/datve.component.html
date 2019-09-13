@@ -1,0 +1,92 @@
+<div class="myContainer" *ngIf="inforFilm!=null">
+    <h3 class="text-center">Quá Trình Đặt Vé</h3>
+    <div class="navs">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="pill" href="#home">01. CHỌN LOẠI VÉ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">02. CHỌN GHẾ & THANH TOÁN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu2">03. KẾT QUẢ ĐẶT VÉ</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="home">
+            <div class="infors" *ngIf="inforFilm!=null">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div [style.background-image]="'url(' + photo + ')'" class="ImgFilm">
+                            <div class="AlignItem">
+                                <h5><span>Tên Phim:</span>{{inforFilm[0].tenPhim}}</h5>
+                                <p> <span>Đánh Giá:</span> {{inforFilm[0].danhGia}} / 5 </p>
+                                <p> <span>Ngày Ra Rạp:</span> {{inforFilm[0].ngayKhoiChieu | date: 'dd-MM-yyyy'}}</p>
+                                <p> <span>Mô Tả:</span> {{inforFilm[0].moTa}} </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8" *ngIf="informLC!=null">
+                        <div class="container" *ngIf="groupsGhe!=null">
+                            <div class="row">
+                                <div class="Img">
+                                    <img [src]="cinema.logo" alt="HìnhLogo">
+                                </div>
+                                <div class="InforCinema">
+                                    <p>{{inforFilmandCinema.thongTinRap.tenCumRap}}</p>
+                                    <p>{{informLC.diaChi}}</p>
+                                    <p>{{inforFilmandCinema.ngayChieuGioChieu | date: 'hh:mm a'}}-{{informLC.tenRap}}
+                                    </p>
+
+                                </div>
+                            </div>
+                            <div class="bookchair" *ngFor="let item of groupsGhe;let i=index">
+                                <app-chonghe [listGhe]="item" [i]="i" [(counter)]="counterValue"
+                                    (money)="getMoney($event)">
+                                    <!-- [(counter)]="counterValue" -->
+                                </app-chonghe>
+
+                            </div>
+                            <hr>
+                            <p>{{this.slgt*this.moneynormal+this.slgv*this.moneyvip}}</p>
+                            <button data-toggle="pill" href="#menu1">
+                                Chọn Ghế
+                            </button>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane container fade" id="menu1">
+            <div class="row">
+                    <div class="col-md-7 pt-3">
+                        <ng-container *ngFor="let item of informLC.danhSachGhe; let stt=index">
+                            <app-item-ghe [ghe]="item" (eventDatGhe)="booking($event)"></app-item-ghe>
+                            <br *ngIf="(stt+1) % 10 === 0">
+                        </ng-container>
+                    </div>
+                    <div class="col-md-5">
+                        <p>{{this.slgt}}</p>
+                        <p>{{this.slgv}}</p>
+                    </div>
+            </div>
+        
+
+           
+
+
+
+
+
+        </div>
+        <div class="tab-pane container fade" id="menu2">...</div>
+    </div>
+
+
+
+</div>

@@ -1,0 +1,13 @@
+<div class="media border p-3">
+    <div class="media-body">
+        <h4>{{this.CumRap[0].tenCumRap}}</h4>
+        <p><span>Địa Chỉ:</span> <i> {{this.CumRap[0].diaChi}}</i> </p>
+        <div class="row">
+            <div class="GioChieu" *ngFor="let item of mangchuan">
+                <a class="btn btn-success"  (click)="datve(item)">{{item.ngayChieuGioChieu | date:'h:mm a'}}</a>
+            </div>
+
+        </div>
+
+    </div>
+</div>

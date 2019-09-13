@@ -21,6 +21,7 @@ export class ChitietphimComponent implements OnInit {
 
   // Xử Lý Ngày Tháng Năm
   indexTabs: any;
+  indexTabs2: any;
   cinemaName: string = 'BHDStar';
   lichChieuofFilm: any = [];
   // filmsSameDay: any = [];
@@ -28,7 +29,8 @@ export class ChitietphimComponent implements OnInit {
   group_to_values: any = [];
   groups: any = [];
   groupsofcinemadays: any = [];
-
+  groupshowcinemaday: any = [];
+  thongtincumrap:any=[];
 
 
 
@@ -62,9 +64,7 @@ export class ChitietphimComponent implements OnInit {
     this.dataser.get(uri).subscribe((data: any) => {
       this.inforLC = data;
       console.log(data);
-
       this.cinemamainplay = data['heThongRapChieu'];
-
       this.getRapPhim();
       this.idTrailer = "https://www.youtube.com/embed/" + this.getId(data.trailer);
       this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.idTrailer);
@@ -78,7 +78,6 @@ export class ChitietphimComponent implements OnInit {
       this.cinemaplay = this.cinema.filter((item1) => {
         return this.cinemamainplay.find((item2) => item2.maHeThongRap === item1.maHeThongRap)
       });
-      // console.log(this.cinemaplay);
     });
 
   }
@@ -102,16 +101,6 @@ export class ChitietphimComponent implements OnInit {
     const uri = `QuanLyPhim/LayThongTinPhim?MaPhim=${this.iDfilm}`;
     this.dataser.get(uri).subscribe((data: any) => {
       this.lichChieuofFilm = data.lichChieu;
-      // for (let i = 0; i < this.lichChieuofFilm.length - 1; i++) {
-      //   for (let j = i + 1; j < this.lichChieuofFilm.length; j++) {
-      //     if (this.lichChieuofFilm[i].ngayChieuGioChieu > this.lichChieuofFilm[j].ngayChieuGioChieu) {
-      //       let a = this.lichChieuofFilm[i];
-      //       this.lichChieuofFilm[i] = this.lichChieuofFilm[j];
-      //       this.lichChieuofFilm[j] = a;
-      //     }
-      //   }
-      // }
-                    // console.log(this.lichChieuofFilm);
       // const group_to_values=this.lichChieuofFilm.reduce((obj,item)=>{
       //   const date=item.ngayChieuGioChieu.split('T')[0];
       //   obj[date]=obj[date] ||[];
@@ -119,12 +108,10 @@ export class ChitietphimComponent implements OnInit {
       //   return obj
       // },{});
       // console.log(group_to_values);
-
       // this.groups=Object.keys(group_to_values).map(function(key){
       //   return {ngayChieuGioChieu:key,lichChieuofFilm:group_to_values[key]};
       // })
       // console.log(this.groups); 
-
       this.groups = this.lichChieuofFilm.reduce((obj, item) => {
         const marap = item.thongTinRap.maHeThongRap;
         obj[marap] = obj[marap] || [];
@@ -132,27 +119,6 @@ export class ChitietphimComponent implements OnInit {
         return obj;
       }, {});
       console.log(this.groups);
-
-      // const group_to_cinema_day= Object.values(group_to_cinema).map(function(item){
-      //     return item.reduce((obj,item1)=>{
-      //     const date=item1.ngayChieuGioChieu.split('T')[0];
-      //     obj[date]=obj[date] ||[];
-      //     obj[date].push(item1);
-      //     return obj
-      //   },{});
-      // });
-
-
-
-
-      // const group_to_cinema_day=group_to_cinema[this.cinemaName].reduce((obj,item)=>{
-      //   const date=item.ngayChieuGioChieu.split('T')[0];
-      //   obj[date]=obj[date] ||[];
-      //   obj[date].push(item);
-      //   return obj
-      // },{});
-      // console.log(group_to_cinema_day);
-
     });
   }
   getNameCinemaFromCinema(nameCinema) {
@@ -162,24 +128,38 @@ export class ChitietphimComponent implements OnInit {
       obj[date].push(item);
       return obj
     }, {});
-    //  var mainArrays=[];
     this.groupsofcinemadays = Object.keys(group_to_cinema_day).map(function (key) {
       return { ngayChieuGioChieu: key, lichChieuofFilm: group_to_cinema_day[key] };
     });
     console.log(this.groupsofcinemadays);
-
-
-
-
     // for (const key in group_to_cinema_day) {
     //   if (group_to_cinema_day.hasOwnProperty(key)) {
     //     this.groupsofcinemadays.push(group_to_cinema_day[key]);
     //   }
     // }
-
-
     this.cinemaName = nameCinema;
-    // console.log(nameCinema);
+    const uri = `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${nameCinema}`;
+    this.dataser.get(uri).subscribe((data:any)=>{
+      this.thongtincumrap=data;
+    });
+   
+  }
+  getTabsAndArrayCinema(e) {
+    this.indexTabs2 = e.index;
+    const newgroup= e.arr.reduce((obj,item)=>{
+      const maCumRap=item.thongTinRap.maCumRap;
+      obj[maCumRap] = obj[maCumRap] || [];
+      obj[maCumRap].push(item);
+      return obj;
+    },{});
+    this.groupshowcinemaday= Object.keys(newgroup).map(function (key) {
+      return { maCumRap: key, lichChieuofFilm: newgroup[key] };
+    });
+
+    
+    
+
+    
   }
 
 
