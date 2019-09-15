@@ -3,7 +3,7 @@ import { Subscription } from "rxjs";
 import { DataService } from "src/app/shared/services/data.service";
 import { SharingData01Service } from "src/app/shared/services/sharing-data01.service";
 import { Movie } from "src/app/common/models/movie";
-declare var $: any;
+// declare var $: any;
 
 @Component({
   selector: "app-carousel01",
@@ -56,7 +56,7 @@ export class Carousel01Component implements OnInit {
           item = this.movieList[index + step];
           return item;
         });
-        console.log(this.slides);
+        // console.log(this.slides);
       }
     });
   }

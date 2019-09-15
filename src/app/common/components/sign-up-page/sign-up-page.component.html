@@ -1,0 +1,203 @@
+<div class="card bg-light">
+  <article class="card-body mx-auto" style="max-width: 400px;">
+    <h4 class="card-title mt-3 text-center">Create Account</h4>
+    <p class="text-center">Get started with your free account</p>
+    <p>
+      <a href="" class="btn btn-block btn-twitter">
+        <i class="fab fa-twitter"></i> Login via Twitter</a
+      >
+      <a href="" class="btn btn-block btn-facebook">
+        <i class="fab fa-facebook-f"></i> Login via Facebook</a
+      >
+    </p>
+    <p class="divider-text">
+      <span class="bg-light">OR</span>
+    </p>
+    <form>
+      <!-- username -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+        </div>
+        <input
+          type="text"
+          minlength="6"
+          maxlength="15"
+          class="form-control"
+          placeholder="User Name"
+          name="userName"
+          #UserName="ngModel"
+          ngModel
+          required
+        />
+      </div>
+      <!-- check validation -->
+      <div
+        *ngIf="UserName.errors && (UserName.dirty || UserName.touched)"
+        class="alert alert-danger my-sign-up-alert"
+      >
+        <!-- kiểm tra rỗng -->
+        <div *ngIf="UserName.errors.required">
+          User name cannot be empty
+        </div>
+
+        <!-- kiểm tra độ dài kí tự -->
+        <div *ngIf="UserName.errors.minlength || UserName.errors.maxlength">
+          6 - 15 character length
+        </div>
+      </div>
+      <!-- end of username -->
+
+      <!-- email -->
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+        </div>
+        <input
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          name="email"
+          class="form-control"
+          placeholder="Email Address"
+          type="email"
+          #Email="ngModel"
+          ngModel
+          required
+        />
+      </div>
+      <div
+        *ngIf="Email.errors && (Email.dirty || Email.touched)"
+        class="alert alert-danger my-sign-up-alert"
+      >
+        <div *ngIf="Email.errors.required">Email cannot be empty</div>
+        <div *ngIf="Email.errors.pattern">
+          Email doesn't have the correct format
+        </div>
+      </div>
+      <!-- end of email -->
+
+      <!-- phone number -->
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+        </div>
+        <select class="custom-select" style="max-width: 120px;">
+          <option selected="">+084</option>
+          <option value="1">+972</option>
+          <option value="1">+972</option>
+          <option value="2">+198</option>
+          <option value="3">+701</option>
+        </select>
+        <input
+          name="phoneNumber"
+          pattern="\d{9}"
+          class="form-control"
+          placeholder="Phone Number"
+          type="text"
+          #PhoneNumber="ngModel"
+          ngModel
+          required
+        />
+      </div>
+      <div
+        *ngIf="PhoneNumber.errors && (PhoneNumber.dirty || PhoneNumber.touched)"
+        class="alert alert-danger my-sign-up-alert"
+      >
+        <div *ngIf="PhoneNumber.errors.required">
+          Phone number cannot be empty
+        </div>
+        <div *ngIf="PhoneNumber.errors.pattern">
+          Phone number doesn't have the correct format
+        </div>
+      </div>
+      <!-- end of phone number -->
+
+      <!-- form-group// -->
+      <!-- <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+        </div>
+        <select class="form-control">
+          <option selected=""> Select job type</option>
+          <option>Designer</option>
+          <option>Manager</option>
+          <option>Accaunting</option>
+        </select>
+      </div> -->
+      <!-- form-group end.// -->
+
+      <!-- password -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+        <input
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          class="form-control"
+          name="password"
+          #Password="ngModel"
+          ngModel
+          autocomplete="new-password"
+          placeholder="Create Password"
+          type="password"
+          required
+        />
+      </div>
+      <div
+        *ngIf="Password.errors && (Password.dirty || Password.touched)"
+        class="alert alert-danger"
+      >
+        <div *ngIf="Password.errors.required">Password cannot be empty</div>
+        <div *ngIf="Password.errors.pattern">
+          Password must have at least 8 characters, 1 number, uppercase and
+          lowercase letters
+        </div>
+      </div>
+
+      <!-- repeat password -->
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+        <input
+          pattern="{{ Password.value }}"
+          class="form-control"
+          name="re-password"
+          #RePassword="ngModel"
+          ngModel
+          autocomplete="new-password"
+          placeholder="Repeat Password"
+          type="password"
+          required
+        />
+      </div>
+      <div
+        *ngIf="RePassword.errors && (RePassword.dirty || RePassword.touched)"
+        class="alert alert-danger"
+      >
+        <div *ngIf="RePassword.errors.required">Password cannot be empty</div>
+        <div *ngIf="RePassword.errors.pattern">
+          The new password and confirmation password do not match
+        </div>
+      </div>
+      <!-- end of password -->
+
+      <!-- create button -->
+      <!-- form-group// -->
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block">
+          Create Account
+        </button>
+      </div>
+      <!-- end of button -->
+
+      <!-- login switch -->
+      <!-- form-group// -->
+      <p class="text-center">Have an account? <a href="">Log In</a></p>
+      <!-- end of login switch -->
+    </form>
+  </article>
+</div>
+<!-- card.// -->

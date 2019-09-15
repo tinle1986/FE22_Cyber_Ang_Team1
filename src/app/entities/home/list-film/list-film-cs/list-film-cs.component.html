@@ -1,48 +1,46 @@
 <div class="main">
-    <div class="content">
-        <section class="header body">
-            <div class="header-detail">
-                <div class="container">
-                    <p class="title">Coming Soon</p>
-                </div>
-            </div>
-        </section>
-        <section class="body">
-            <div class="container">
+  <div class="content">
+    <section class="header body">
+      <div class="header-detail">
+        <div class="container">
+          <p class="title">Coming Soon</p>
+        </div>
+      </div>
+    </section>
+    <section class="body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="page-content">
+              <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-8">
-                        <div class="page-content">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-sm-4"  *ngFor="let item of listFilm | paginate: { itemsPerPage: 9, currentPage: p }">
-                                        <app-film [film]="item">
-
-                                        </app-film>
-                                    </div>
-                                    <pagination-controls class="paging" (pageChange)="p = $event"></pagination-controls>
-                                    <div class="backnow">
-                                        <span id="back-to-top"><i class="fas fa-chevron-up"></i></span>
-                                    </div>    
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="col-md-4">
-                            <app-ads-and-infor></app-ads-and-infor>
-
-
-                    </div>
-
+                  <div
+                    class="col-sm-4"
+                    *ngFor="
+                      let item of listFilm
+                        | paginate: { itemsPerPage: 9, currentPage: p }
+                    "
+                  >
+                    <app-film [film]="item"> </app-film>
+                  </div>
+                  <pagination-controls
+                    class="paging"
+                    (pageChange)="p = $event"
+                  ></pagination-controls>
+                  <div class="backnow">
+                    <span id="back-to-top"
+                      ><i class="fas fa-chevron-up"></i
+                    ></span>
+                  </div>
                 </div>
-
+              </div>
             </div>
-
-
-        </section>
-
-    </div>
+          </div>
+          <div class="col-md-4">
+            <app-ads-and-infor></app-ads-and-infor>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>

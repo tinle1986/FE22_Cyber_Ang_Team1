@@ -1,90 +1,295 @@
-
 <div class="container-fluid sticky-top bg-light">
-<div class="my-container01">
-  <div class="myNavBar">
-    <div class="myNavBar-left">
-      <div class="logoImg">
-        <a href="#">
-          <img src="./../../../assets/images/img_66.png" alt="" />
-        </a>
-      </div>
-    </div>
-    <div class="myNavBar-right">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container navbar-container">
-          <!-- New menu -->
-          <ul class="navbar-nav">
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link my-dropdown-toggle"
-                href="#"
-                id="navbardrop"
-                data-toggle="dropdown"
-              >
-                TRANG CHỦ
-              </a>
-              <div class="dropdown-menu animate slideIn">
-                <a class="dropdown-item" href="#">Link 1</a>
-                <a class="dropdown-item" href="#">Link 2</a>
-                <a class="dropdown-item" href="#">Link 3</a>
-              </div>
-            </li>
-
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link my-dropdown-toggle"
-                href="#"
-                id="navbardrop"
-                data-toggle="dropdown"
-              >
-                PHIM
-              </a>
-              <div class="dropdown-menu animate slideIn">
-                <a class="dropdown-item" href="#">Link 1</a>
-                <a class="dropdown-item" href="#">Link 2</a>
-                <a class="dropdown-item" href="#">Link 3</a>
-              </div>
-            </li>
-
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link my-dropdown-toggle"
-                href="#"
-                id="navbardrop"
-                data-toggle="dropdown"
-              >
-                LỊCH CHIẾU
-              </a>
-              <div class="dropdown-menu animate slideIn">
-                <a class="dropdown-item" href="#">Link 1</a>
-                <a class="dropdown-item" href="#">Link 2</a>
-                <a class="dropdown-item" href="#">Link 3</a>
-              </div>
-            </li>
-
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link my-dropdown-toggle"
-                href="#"
-                id="navbardrop"
-                data-toggle="dropdown"
-              >
-                TOP PHIM
-              </a>
-              <div class="dropdown-menu animate slideIn">
-                <a class="dropdown-item" href="#">Link 1</a>
-                <a class="dropdown-item" href="#">Link 2</a>
-                <a class="dropdown-item" href="#">Link 3</a>
-              </div>
-            </li>
-          </ul>
+  <div class="my-container01">
+    <div class="myNavBar">
+      <div class="myNavBar-left">
+        <div class="logoImg">
+          <a href="#">
+            <img src="./../../../assets/images/img_66.png" alt="" />
+          </a>
         </div>
-      </nav>
+      </div>
+      <div class="myNavBar-right">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container navbar-container">
+            <!-- New menu -->
+            <ul class="navbar-nav">
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link my-dropdown-toggle"
+                  href="#"
+                  id="navbardrop"
+                  data-toggle="dropdown"
+                >
+                  TRANG CHỦ
+                </a>
+                <div class="dropdown-menu animate slideIn">
+                  <a class="dropdown-item" href="#">Link 1</a>
+                  <a class="dropdown-item" href="#">Link 2</a>
+                  <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+              </li>
+
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link my-dropdown-toggle"
+                  href="#"
+                  id="navbardrop"
+                  data-toggle="dropdown"
+                >
+                  PHIM
+                </a>
+                <div class="dropdown-menu animate slideIn">
+                  <a class="dropdown-item" href="#">Link 1</a>
+                  <a class="dropdown-item" href="#">Link 2</a>
+                  <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+              </li>
+
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link my-dropdown-toggle"
+                  href="#"
+                  id="navbardrop"
+                  data-toggle="dropdown"
+                >
+                  LỊCH CHIẾU
+                </a>
+                <div class="dropdown-menu animate slideIn">
+                  <a class="dropdown-item" href="#">Link 1</a>
+                  <a class="dropdown-item" href="#">Link 2</a>
+                  <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+              </li>
+
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link my-dropdown-toggle"
+                  href="#"
+                  id="navbardrop"
+                  data-toggle="dropdown"
+                >
+                  TOP PHIM
+                </a>
+                <div class="dropdown-menu animate slideIn">
+                  <a class="dropdown-item" href="#">Link 1</a>
+                  <a class="dropdown-item" href="#">Link 2</a>
+                  <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+              </li>
+
+              <!-- login button -->
+              <li><p class="navbar-text">Already have an account?</p></li>
+              <li class="dropdown login-btn">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                  ><b><i class="far fa-user"></i> </b>
+                  <span class="caret"></span
+                ></a>
+                <ul id="login-dp" class="dropdown-menu animate slideIn">
+                  <li>
+                    <div class="row">
+                      <div class="col-md-12">
+                        Login via
+                        <div class="social-buttons">
+                          <a href="#" class="btn btn-fb"
+                            ><i class="fab fa-facebook-f"></i> Facebook</a
+                          >
+                          <a href="#" class="btn btn-tw"
+                            ><i class="fab fa-twitter"></i> Twitter</a
+                          >
+                        </div>
+                        or
+                        <form
+                          class="form"
+                          role="form"
+                          method="post"
+                          action="login"
+                          accept-charset="UTF-8"
+                          id="login-nav"
+                          #loginForm="ngForm"
+                          (ngSubmit)="login(loginForm.value)"
+                        >
+                          <div class="form-group">
+                            <label class="sr-only" for="">User Name</label>
+                            <input
+                              type="text"
+                              autocomplete="username"
+                              placeholder="User Name"
+                              minlength="6"
+                              maxlength="15"
+                              class="form-control"
+                              name="userName"
+                              #UserName="ngModel"
+                              ngModel
+                              required
+                            />
+
+                            <!-- check username validation -->
+                            <!-- <div
+                              *ngIf="
+                                UserName.errors &&
+                                (UserName.dirty || UserName.touched)
+                              "
+                              class="alert alert-danger"
+                            >
+                              <div *ngIf="UserName.errors.required">
+                                User name cannot be empty.
+                              </div>
+                              <div
+                                *ngIf="
+                                  UserName.errors.minlength ||
+                                  UserName.errors.maxlength
+                                "
+                              >
+                                String is 6-15 characters long.
+                              </div>
+                            </div> -->
+                            <!-- end of check username validation -->
+                          </div>
+                          <div class="form-group">
+                            <label class="sr-only" for="">Password</label>
+                            <input
+                              type="password"
+                              autocomplete="current-password"
+                              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                              class="form-control"
+                              placeholder="Password"
+                              name="password"
+                              #Password="ngModel"
+                              ngModel
+                              required
+                            />
+                            <!-- check password validation -->
+                            <!-- <div
+                              *ngIf="
+                                Password.errors &&
+                                (Password.dirty || Password.touched)
+                              "
+                              class=" alert alert-danger"
+                            >
+                              <div *ngIf="Password.errors.required">
+                                Password cannot be empty.
+                              </div>
+                              <div *ngIf="Password.errors.pattern">
+                                Password is not in correct format.
+                              </div>
+                            </div> -->
+                            <!-- end of check password validation -->
+                            <div class="help-block text-right">
+                              <a href="">Forget the password?</a>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <button
+                              type="submit"
+                              class="btn btn-primary btn-block"
+                              
+                            >
+                              Sign in
+                            </button>
+                          </div>
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox" /> keep me logged-in
+                            </label>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="bottom text-center">
+                        New here ? <a routerLink="/sign-up"><b>Sign Up</b></a>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <!-- end of login button -->
+            </ul>
+          </div>
+        </nav>
+      </div>
     </div>
   </div>
 </div>
-</div>
+
+<!-- login button sample -->
+<!-- <li><p class="navbar-text">Already have an account?</p></li>
+<li class="dropdown login-btn">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+    ><b><i class="far fa-user"></i> </b>
+    <span class="caret"></span
+  ></a>
+  <ul id="login-dp" class="dropdown-menu">
+    <li>
+      <div class="row">
+        <div class="col-md-12">
+          Login via
+          <div class="social-buttons">
+            <a href="#" class="btn btn-fb"
+              ><i class="fab fa-facebook-f"></i> Facebook</a
+            >
+            <a href="#" class="btn btn-tw"
+              ><i class="fab fa-twitter"></i> Twitter</a
+            >
+          </div>
+          or
+          <form
+            class="form"
+            role="form"
+            method="post"
+            action="login"
+            accept-charset="UTF-8"
+            id="login-nav"
+          >
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputEmail2"
+                >Email address</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail2"
+                placeholder="Email address"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputPassword2"
+                >Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="exampleInputPassword2"
+                placeholder="Password"
+                required
+              />
+              <div class="help-block text-right">
+                <a href="">Forget the password ?</a>
+              </div>
+            </div>
+            <div class="form-group">
+              <button
+                type="submit"
+                class="btn btn-primary btn-block"
+              >
+                Sign in
+              </button>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" /> keep me logged-in
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="bottom text-center">
+          New here ? <a href="#"><b>Sign Up</b></a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li> -->
+<!-- end of login button -->
