@@ -49,6 +49,12 @@ export class HeaderComponent implements OnInit {
     );
   }
 
+  logout() {
+    // localStorage.clear();        // 1st way to remove localStorage
+    localStorage.removeItem("localUser");       // 2nd way to remove localStorage
+    this.loginStatus=false;
+  }
+
   getLocalStore() {
     if (localStorage.getItem("localUser") != null) {
       this.localUser = JSON.parse(localStorage.getItem("localUser"));
