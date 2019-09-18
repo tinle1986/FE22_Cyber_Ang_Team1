@@ -6,15 +6,17 @@ import { AdsAndInforModule } from '../list-film/ads-and-infor/ads-and-infor.modu
 import { CinemaComponent } from './cinema/cinema.component';
 import { CinemadaysComponent } from './cinemadays/cinemadays.component';
 import { ItemcinemaComponent } from './itemcinema/itemcinema.component';
-
+import { BarRatingModule } from "ngx-bar-rating";
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   declarations: [ChitietphimComponent, CinemaComponent, CinemadaysComponent, ItemcinemaComponent],
   exports: [ChitietphimComponent],
   imports: [
+    RatingModule,
     AdsAndInforModule,
     ChitietphimRoutingModule,
-    CommonModule
+    CommonModule,
   ]
 })
 export class ChitietphimModule { }

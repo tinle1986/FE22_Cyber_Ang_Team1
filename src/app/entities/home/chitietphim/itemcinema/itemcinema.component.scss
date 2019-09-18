@@ -1,0 +1,27 @@
+.media{
+    background: #f8f8f8;
+    width: 100%;
+    .media-body{
+        // .tenRap{
+
+        // }
+        .diaChi{
+            color: #666;
+            font-size: 1rem;
+            word-spacing: normal;
+            width: calc(100% - 100px);
+            margin: 0;
+            font-weight: 500;
+
+        }
+        .ListgioChieu{
+            .GioChieu{
+                .myBtn{
+                    color: white;
+                    background-color: #fe7900;
+
+                }
+            }
+        }
+    }
+}

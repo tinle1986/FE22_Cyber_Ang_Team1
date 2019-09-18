@@ -25,35 +25,43 @@ export class DatveComponent implements OnInit {
   money: number = 0;
   slgt: number = 0;
   slgv: number = 0;
-  moneynormal: number=0;
-  moneyvip:number=0;
+  moneynormal: number = 0;
+  moneyvip: number = 0;
+
+  mangGheDangChon: any[] = new Array();
+  mangGheDangChonPhanLoai: any[] = new Array();
+
+  cssbtnThanhToan: boolean = false;
+
+
+
 
 
   constructor(private actiRoute: ActivatedRoute, private dataser: DataserviceService, private sharedatafilm: ShareDataService) { }
 
 
   ngOnInit() {
-    this.showCinema(); 
+    this.showCinema();
     this.getInforFilmfromdatashare();
     this.getParamsUrl();
     this.getInforFilm();
     this.getLichChieu();
-   
+
   }
- 
- 
+
+
   getInforFilm() {
     const uri = `QuanLyPhim/LayDanhSachPhim?maNhom=GP06&tenPhim=${this.nameFilm}`;
     this.dataser.get(uri).subscribe((data: any) => {
       this.inforFilm = data;
       this.photo = this.inforFilm[0].hinhAnh;
-      console.log(data);
+      // console.log(data);
 
     });
   }
   getInforFilmfromdatashare() {
     this.sharedatafilm.shareinforMovie.subscribe((data: any) => {
-      console.log(data);
+      // console.log(data);
       this.inforFilmandCinema = data;
     });
   }
@@ -62,7 +70,7 @@ export class DatveComponent implements OnInit {
       this.iDfilm = data.id;
       this.maLC = data.maLichChieu;
       this.nameFilm = data.tenPhim;
-      console.log(this.maLC, this.nameFilm);
+      // console.log(this.maLC, this.nameFilm);
     });
   }
   getLichChieu() {
@@ -79,13 +87,13 @@ export class DatveComponent implements OnInit {
       this.groupsGhe = Object.keys(group).map(function (key) {
         return { loaiGhe: key, groupCinema: group[key] };
       });
-      console.log(this.groupsGhe);
+      // console.log(this.groupsGhe);
     });
   }
   showCinema() {
     this.sharedatafilm.shareRapChieu.subscribe((data: any) => {
       this.cinema = data;
-      console.log(data);
+      // console.log(data);
     })
   }
   getMoney(e) {
@@ -100,9 +108,35 @@ export class DatveComponent implements OnInit {
     }
     // this.money=this.slgt*this.moneynormal+this.slgv*this.moneyvip;
   }
-  booking(item){
-    console.log(item);
-    
+  booking(objGhe) {
+    var conVip: boolean = false;
+    var conNor: boolean = false;
+    if (objGhe.trangThaiChon) {
+      this.mangGheDangChon.push(objGhe.ghe);
+    } else {
+      let viTri = this.mangGheDangChon.findIndex(item => {
+        return item.SoGhe === objGhe.ghe.SoGhe;
+      });
+      this.mangGheDangChon.splice(viTri, 1);
+    }
+    // console.log(this.mangGheDangChon);
+    const groupve = this.mangGheDangChon.reduce((obj, item) => {
+      const loaive = item.loaiGhe;
+      obj[loaive] = obj[loaive] || [];
+      obj[loaive].push(item);
+      return obj;
+    }, {});
+    this.mangGheDangChonPhanLoai = Object.keys(groupve).map(function (key) {
+      return { loaive: key, nhomve: groupve[key] };
+    });
+    // console.log(this.mangGheDangChonPhanLoai);
+    if (this.mangGheDangChonPhanLoai[0] && this.mangGheDangChonPhanLoai[0].nhomve.length == this.slgv) {
+      conVip = true;
+    }
+    if (this.mangGheDangChonPhanLoai[1] && this.mangGheDangChonPhanLoai[1].nhomve.length == this.slgt) {
+      conNor = true;
+    }
+    this.cssbtnThanhToan = conVip && conNor;
+    console.log(this.cssbtnThanhToan);
   }
-  
 }

@@ -1,3 +1,4 @@
-<li class="nav-item">
-        <a class="nav-link text-center p-0" (click)="InforTabContents()">{{cinemadays.ngayChieuGioChieu | date: 'dd-MM'}}</a>
+<li class="nav-item ngayChieu col-12">
+        <a class="nav-link text-center chuNgay p-0 active"
+                (click)="InforTabContents()">{{cinemadays.ngayChieuGioChieu | date: 'dd-MMM-yyyy'}}</a>
 </li>

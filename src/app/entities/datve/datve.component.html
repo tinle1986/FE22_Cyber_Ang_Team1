@@ -16,7 +16,7 @@
 
     <div class="tab-content">
         <div class="tab-pane active" id="home">
-            <div class="infors" *ngIf="inforFilm!=null">
+            <div class="infors">
                 <div class="row">
                     <div class="col-md-4">
                         <div [style.background-image]="'url(' + photo + ')'" class="ImgFilm">
@@ -29,16 +29,16 @@
                         </div>
 
                     </div>
-                    <div class="col-md-8" *ngIf="informLC!=null">
-                        <div class="container" *ngIf="groupsGhe!=null">
+                    <div class="col-md-8" *ngIf='groupsGhe'>
+                        <div class="container">
                             <div class="row">
                                 <div class="Img">
                                     <img [src]="cinema.logo" alt="HìnhLogo">
                                 </div>
-                                <div class="InforCinema">
+                                <div class="InforCinema" *ngIf='inforFilmandCinema'>
                                     <p>{{inforFilmandCinema.thongTinRap.tenCumRap}}</p>
                                     <p>{{informLC.diaChi}}</p>
-                                    <p>{{inforFilmandCinema.ngayChieuGioChieu | date: 'hh:mm a'}}-{{informLC.tenRap}}
+                                    <p>{{inforFilmandCinema.ngayChieuGioChieu | date: 'hh:mm a'}}-{{informLC.thongTinPhim.tenRap}}
                                     </p>
 
                                 </div>
@@ -63,21 +63,24 @@
             </div>
         </div>
         <div class="tab-pane container fade" id="menu1">
-            <div class="row">
-                    <div class="col-md-7 pt-3">
-                        <ng-container *ngFor="let item of informLC.danhSachGhe; let stt=index">
-                            <app-item-ghe [ghe]="item" (eventDatGhe)="booking($event)"></app-item-ghe>
-                            <br *ngIf="(stt+1) % 10 === 0">
-                        </ng-container>
-                    </div>
-                    <div class="col-md-5">
-                        <p>{{this.slgt}}</p>
-                        <p>{{this.slgv}}</p>
-                    </div>
+            <div class="row" *ngIf='informLC!=null'>
+                <div class="col-md-7 pt-3">
+                    <ng-container *ngFor="let item of informLC.danhSachGhe; let stt=index">
+                        <app-item-ghe [ghe]="item" (eventDatGhe)="booking($event)"></app-item-ghe>
+                        <br *ngIf="(stt+1) % 10 === 0">
+                    </ng-container>
+                </div>
+                <div class="col-md-5">
+                    <p>{{this.slgt}}</p>
+                    <p>{{this.slgv}}</p>
+                    <p
+                        [ngClass]="{'btn btn-danger':cssbtnThanhToan}">
+                        Thanh Toán</p>
+                </div>
             </div>
-        
 
-           
+
+
 
 
 

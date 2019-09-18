@@ -3,6 +3,7 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browse
 import { ActivatedRoute, Router } from '@angular/router';
 import { ManageListFilmService } from 'src/app/common/services/manage-list-film.service';
 import { DataserviceService } from 'src/app/common/services/dataservice.service';
+import { StarRatingComponent } from 'ng-starrating';
 @Component({
   selector: 'app-chitietphim',
   templateUrl: './chitietphim.component.html',
@@ -18,6 +19,7 @@ export class ChitietphimComponent implements OnInit {
   idTrailer: string = '';
   videoUrl: SafeResourceUrl;
   cinemamainplay: any = [];
+  ratenow: number = 5;
 
   // Xử Lý Ngày Tháng Năm
   indexTabs: any;
@@ -30,7 +32,7 @@ export class ChitietphimComponent implements OnInit {
   groups: any = [];
   groupsofcinemadays: any = [];
   groupshowcinemaday: any = [];
-  thongtincumrap:any=[];
+  thongtincumrap: any = [];
 
 
 
@@ -67,7 +69,9 @@ export class ChitietphimComponent implements OnInit {
       this.cinemamainplay = data['heThongRapChieu'];
       this.getRapPhim();
       this.idTrailer = "https://www.youtube.com/embed/" + this.getId(data.trailer);
-      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.idTrailer);
+      if (this.sanitizer.bypassSecurityTrustResourceUrl(this.idTrailer)!=null) {
+        this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.idTrailer);
+      }
     });
   }
 
@@ -139,28 +143,31 @@ export class ChitietphimComponent implements OnInit {
     // }
     this.cinemaName = nameCinema;
     const uri = `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${nameCinema}`;
-    this.dataser.get(uri).subscribe((data:any)=>{
-      this.thongtincumrap=data;
+    this.dataser.get(uri).subscribe((data: any) => {
+      this.thongtincumrap = data;
     });
-   
+
   }
   getTabsAndArrayCinema(e) {
     this.indexTabs2 = e.index;
-    const newgroup= e.arr.reduce((obj,item)=>{
-      const maCumRap=item.thongTinRap.maCumRap;
+    const newgroup = e.arr.reduce((obj, item) => {
+      const maCumRap = item.thongTinRap.maCumRap;
       obj[maCumRap] = obj[maCumRap] || [];
       obj[maCumRap].push(item);
       return obj;
-    },{});
-    this.groupshowcinemaday= Object.keys(newgroup).map(function (key) {
+    }, {});
+    this.groupshowcinemaday = Object.keys(newgroup).map(function (key) {
       return { maCumRap: key, lichChieuofFilm: newgroup[key] };
     });
-
-    
-    
-
-    
   }
+  onRate($event: { oldValue: number, newValue: number, starRating: StarRatingComponent }) {
+    this.ratenow = $event.newValue;
+    alert(`
+      Sao Cũ: ${$event.oldValue} sao, 
+      Sao Mới: ${$event.newValue} sao, 
+      Bạn đã hoàn thành việc đánh giá. Xin chân thành cảm ơn`);
+  }
+
 
 
 

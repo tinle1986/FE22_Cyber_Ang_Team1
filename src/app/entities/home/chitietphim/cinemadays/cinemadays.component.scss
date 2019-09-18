@@ -1,0 +1,21 @@
+.ngayChieu{
+    color: #666;
+    width: 100%;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 40px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    padding: 2% 0%;
+    margin: 4% 0;
+    font-weight: bold;
+    .chuNgay{
+        text-align: center;
+    }   
+    .active{
+    background: #dbdbdb;
+    color: #000;
+    border: dotted black .5px;
+    }
+}
