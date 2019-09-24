@@ -13,7 +13,7 @@
     <p class="divider-text">
       <span class="bg-light">OR</span>
     </p>
-    <form>
+    <form #registerForm="ngForm" (ngSubmit)="signUp(registerForm.value)">
       <!-- username -->
       <div class="form-group input-group">
         <div class="input-group-prepend">
@@ -32,22 +32,39 @@
         />
       </div>
       <!-- check validation -->
-      <div
+      <!-- <div
         *ngIf="UserName.errors && (UserName.dirty || UserName.touched)"
         class="alert alert-danger my-sign-up-alert"
-      >
+      > -->
         <!-- kiểm tra rỗng -->
-        <div *ngIf="UserName.errors.required">
+        <!-- <div *ngIf="UserName.errors.required">
           User name cannot be empty
-        </div>
+        </div> -->
 
         <!-- kiểm tra độ dài kí tự -->
-        <div *ngIf="UserName.errors.minlength || UserName.errors.maxlength">
+        <!-- <div *ngIf="UserName.errors.minlength || UserName.errors.maxlength">
           6 - 15 character length
         </div>
-      </div>
+      </div> -->
       <!-- end of username -->
-
+      <!-- fullname -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fas fa-user-check"></i> </span>
+        </div>
+        <input
+          type="text"
+          minlength="6"
+          maxlength="15"
+          class="form-control"
+          placeholder="Full Name"
+          name="fullName"
+          #UserName="ngModel"
+          ngModel
+          required
+        />
+      </div>
+      <!-- end of fullname -->
       <!-- email -->
       <!-- form-group// -->
       <div class="form-group input-group">
@@ -65,7 +82,7 @@
           required
         />
       </div>
-      <div
+      <!-- <div
         *ngIf="Email.errors && (Email.dirty || Email.touched)"
         class="alert alert-danger my-sign-up-alert"
       >
@@ -73,7 +90,7 @@
         <div *ngIf="Email.errors.pattern">
           Email doesn't have the correct format
         </div>
-      </div>
+      </div> -->
       <!-- end of email -->
 
       <!-- phone number -->
@@ -100,7 +117,7 @@
           required
         />
       </div>
-      <div
+      <!-- <div
         *ngIf="PhoneNumber.errors && (PhoneNumber.dirty || PhoneNumber.touched)"
         class="alert alert-danger my-sign-up-alert"
       >
@@ -110,7 +127,7 @@
         <div *ngIf="PhoneNumber.errors.pattern">
           Phone number doesn't have the correct format
         </div>
-      </div>
+      </div> -->
       <!-- end of phone number -->
 
       <!-- form-group// -->
@@ -144,7 +161,7 @@
           required
         />
       </div>
-      <div
+      <!-- <div
         *ngIf="Password.errors && (Password.dirty || Password.touched)"
         class="alert alert-danger"
       >
@@ -153,7 +170,7 @@
           Password must have at least 8 characters, 1 number, uppercase and
           lowercase letters
         </div>
-      </div>
+      </div> -->
 
       <!-- repeat password -->
       <!-- form-group// -->
@@ -173,7 +190,7 @@
           required
         />
       </div>
-      <div
+      <!-- <div
         *ngIf="RePassword.errors && (RePassword.dirty || RePassword.touched)"
         class="alert alert-danger"
       >
@@ -181,13 +198,13 @@
         <div *ngIf="RePassword.errors.pattern">
           The new password and confirmation password do not match
         </div>
-      </div>
+      </div> -->
       <!-- end of password -->
 
       <!-- create button -->
       <!-- form-group// -->
       <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block">
+        <button type="submit" class="btn btn-primary btn-block" >
           Create Account
         </button>
       </div>
