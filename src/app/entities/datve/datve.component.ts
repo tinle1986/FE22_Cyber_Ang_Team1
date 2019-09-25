@@ -9,9 +9,13 @@ import { ShareDataService } from 'src/app/shared/sharing-datas/share-data.servic
   styleUrls: ['./datve.component.scss']
 })
 export class DatveComponent implements OnInit {
+  // coinwallet: string[] = ['01. CHỌN LOẠI VÉ','02. CHỌN GHẾ & THANH TOÁN','03. KẾT QUẢ ĐẶT VÉ'];
+  // selectedwallet = this.coinwallet[0];
+
   iDfilm: any;
   maLC: any;
   nameFilm: any;
+  idRap: any;
 
   informLC: any;
   inforFilm: any;
@@ -33,7 +37,16 @@ export class DatveComponent implements OnInit {
 
   cssbtnThanhToan: boolean = false;
 
+  lichChieuofFilm: any;
+  groupFind: any;
 
+  groupCinema: any[] = new Array();
+  thongTinFLC: any;
+
+
+  idTab1: any;
+  idTab2: any;
+  idTab3: any;
 
 
 
@@ -41,12 +54,52 @@ export class DatveComponent implements OnInit {
 
 
   ngOnInit() {
-    this.showCinema();
-    this.getInforFilmfromdatashare();
+    // this.getInforFilmfromdatashare();
     this.getParamsUrl();
+    this.inforCinema();
+    // this.showCinema();
+    // this.getInforFilmfromdatashare();
     this.getInforFilm();
+    this.getInformationFilm();
     this.getLichChieu();
+  }
+  getInformationFilm() {
+    const uri = `QuanLyPhim/LayThongTinPhim?MaPhim=${this.iDfilm}`;
+    this.dataser.get(uri).subscribe((data: any) => {
+      if (data) {
+        this.lichChieuofFilm = data.lichChieu;
+      }
+      var groups = this.lichChieuofFilm.reduce((obj, item) => {
+        const marap = item.thongTinRap.maHeThongRap;
+        obj[marap] = obj[marap] || [];
+        obj[marap].push(item);
+        return obj;
+      }, {});
+      this.groupCinema = Object.keys(groups).map(function (key) {
+        return { Cinema: key, DSLCP: groups[key] };
+      });
+      for (let i = 0; i < this.groupCinema.length; i++) {
+        if (this.groupCinema[i].Cinema == this.idRap) {
+          this.groupFind = this.groupCinema[i].DSLCP;
+        }
+      }
+      for (let item of this.groupFind) {
+        if (item.maLichChieu == this.maLC) {
+          this.thongTinFLC = item;
+          console.log(this.thongTinFLC);
+        }
+      }
+    });
+  }
+  inforCinema() {
+    const uri = `QuanLyRap/LayThongTinHeThongRap?maHeThongRap=${this.idRap}`;
+    this.dataser.get(uri).subscribe((data: any) => {
+      if (data != null) {
+        console.log(data);
 
+        this.cinema = data;
+      }
+    });
   }
 
 
@@ -61,8 +114,10 @@ export class DatveComponent implements OnInit {
   }
   getInforFilmfromdatashare() {
     this.sharedatafilm.shareinforMovie.subscribe((data: any) => {
-      // console.log(data);
-      this.inforFilmandCinema = data;
+      console.log(data);
+      if (data) {
+        this.inforFilmandCinema = data;
+      }
     });
   }
   getParamsUrl() {
@@ -70,6 +125,7 @@ export class DatveComponent implements OnInit {
       this.iDfilm = data.id;
       this.maLC = data.maLichChieu;
       this.nameFilm = data.tenPhim;
+      this.idRap = data.rapChieu;
       // console.log(this.maLC, this.nameFilm);
     });
   }
@@ -89,11 +145,12 @@ export class DatveComponent implements OnInit {
       });
       // console.log(this.groupsGhe);
     });
+
   }
   showCinema() {
     this.sharedatafilm.shareRapChieu.subscribe((data: any) => {
       this.cinema = data;
-      // console.log(data);
+      console.log(data);
     })
   }
   getMoney(e) {
@@ -139,4 +196,10 @@ export class DatveComponent implements OnInit {
     this.cssbtnThanhToan = conVip && conNor;
     console.log(this.cssbtnThanhToan);
   }
+  // getIndex1(){
+  //   this.idTab1='1';
+  // }
+  // getIndex2(){
+  //   this.idTab2='2';
+  // }
 }

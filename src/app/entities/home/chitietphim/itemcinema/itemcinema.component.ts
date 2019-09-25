@@ -9,12 +9,13 @@ import { ShareDataService } from 'src/app/shared/sharing-datas/share-data.servic
 export class ItemcinemaComponent implements OnInit {
   @Input() itemcinema: any;
   @Input() hethongrap: any
+  @Input() cinema:any;
   CumRap: any = {};
   constructor(private router: Router, private sharedata: ShareDataService) { }
   mangchuan: any = [];
 
   ngOnInit() {
-    console.log(this.itemcinema.lichChieuofFilm);
+    console.log(this.cinema);
 
     this.getGioChieuChuan();
     this.getCumRap();
@@ -66,7 +67,8 @@ export class ItemcinemaComponent implements OnInit {
     return `${hours}:${minutes}`;
   }
   datve(item) {
+    console.log(item);
     this.sharedata.sharingInforMovie(item);
-    this.router.navigate(["/book-ticket"], { queryParams: { id: item.maPhim, maLichChieu: item.maLichChieu, tenPhim: item.tenPhim,} });
+    this.router.navigate(["/book-ticket"], { queryParams: { id: item.maPhim, maLichChieu: item.maLichChieu, tenPhim: item.tenPhim,rapChieu:this.cinema} });
   }
 }

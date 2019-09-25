@@ -1,5 +1,6 @@
-import { Component, OnInit,Input} from '@angular/core';
-
+import { Component, OnInit,Input,Output} from '@angular/core';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-film',
   templateUrl: './film.component.html',
@@ -7,9 +8,14 @@ import { Component, OnInit,Input} from '@angular/core';
 })
 export class FilmComponent implements OnInit {
   @Input() film:any;
-  constructor() { }
+  @Output() Trailer= new EventEmitter();
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    console.log(this.film);
+  }
+  myTrailer(){
+    this.Trailer.emit(this.film.trailer);
   }
 
 }

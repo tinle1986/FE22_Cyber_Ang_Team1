@@ -15,6 +15,10 @@ const routes: Routes = [
         path:"book-ticket",
         loadChildren:"./datve/datve.module#DatveModule"
       },
+      {
+        path:"admin",
+        loadChildren:"./admin/admin.module#AdminModule"
+      },
     ]
     // children: [
     //   //Trang Home

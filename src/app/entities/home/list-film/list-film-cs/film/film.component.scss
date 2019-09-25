@@ -6,12 +6,11 @@ $colormain:#fe7900;
         height: 316px;
         width: 100%;
     }
-    .img1 :hover{
-        background-color: $colormain;
-        z-index: 1;
-        cursor: pointer;
-        
-    }
+    // .img1 :hover{
+    //     background-color: black;
+    //     z-index: 1;
+    //     cursor: pointer;
+    // }
     .namefilm{
         padding-top: 2%;
         height: 52px;
@@ -42,4 +41,21 @@ $colormain:#fe7900;
         }
     }
 
+}
+.btnPlay{
+    position: absolute;
+    left: 40%;
+    bottom: 58%;
+    z-index: 3;
+    .color{
+       background-color: $colormain;
+       text-align: center;
+    }
+    .btn-primary{
+        background-color:$colormain;
+        border: solid $colormain 1px;
+    }
+}
+.btnPlay:hover{
+    cursor: pointer;
 }

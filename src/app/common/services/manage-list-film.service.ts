@@ -27,7 +27,7 @@ export class ManageListFilmService {
     );
   }
   getListFilmCS():Observable<any>{
-    const url="http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP09";
+    const url="http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP06";
     return this.http.get(url).pipe(
       tap(
         (data:any)=>{

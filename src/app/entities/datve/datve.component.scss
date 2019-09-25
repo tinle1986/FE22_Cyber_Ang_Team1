@@ -1,15 +1,9 @@
 .myContainer{
     font-size: 17px;
     font-weight: 600;
-
-
- 
-   
-    // .navs{
-
-    // }
     .infors{
         .ImgFilm{
+            border: solid black 1px;
             height: auto;
             width: 100%;
             top: 0;
@@ -17,9 +11,9 @@
             left: 0;
             right: 0;
             .AlignItem{
-                text-align: left;
+                text-align: center;
                 margin: auto;
-                padding: 30%;
+                padding: auto;
 
             }
         }

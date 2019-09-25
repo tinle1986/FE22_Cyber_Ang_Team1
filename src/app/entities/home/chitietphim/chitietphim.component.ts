@@ -33,6 +33,7 @@ export class ChitietphimComponent implements OnInit {
   groupsofcinemadays: any = [];
   groupshowcinemaday: any = [];
   thongtincumrap: any = [];
+  
 
 
 
@@ -135,13 +136,14 @@ export class ChitietphimComponent implements OnInit {
     this.groupsofcinemadays = Object.keys(group_to_cinema_day).map(function (key) {
       return { ngayChieuGioChieu: key, lichChieuofFilm: group_to_cinema_day[key] };
     });
-    console.log(this.groupsofcinemadays);
+    // console.log(this.groupsofcinemadays);
     // for (const key in group_to_cinema_day) {
     //   if (group_to_cinema_day.hasOwnProperty(key)) {
     //     this.groupsofcinemadays.push(group_to_cinema_day[key]);
     //   }
     // }
     this.cinemaName = nameCinema;
+    console.log(this.cinemaName);
     const uri = `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${nameCinema}`;
     this.dataser.get(uri).subscribe((data: any) => {
       this.thongtincumrap = data;

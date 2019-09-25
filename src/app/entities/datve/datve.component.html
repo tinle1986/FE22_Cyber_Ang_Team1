@@ -3,17 +3,81 @@
     <div class="navs">
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="pill" href="#home">01. CHỌN LOẠI VÉ</a>
+                <a class="nav-link active" data-toggle="tab" data-target="#home">01. CHỌN LOẠI VÉ</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link">02. CHỌN GHẾ & THANH TOÁN</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="pill" href="#menu2">03. KẾT QUẢ ĐẶT VÉ</a>
+                <a class="nav-link" data-toggle="tab" data-target="#menu2">03. KẾT QUẢ ĐẶT VÉ</a>
             </li>
         </ul>
     </div>
-
+    <div class="myTabBookTicKet pt-4">
+        <div class="row">
+            <div class="col-md-4 inForFILM"> 
+                <!-- <div [style.background-image]="'url(' + photo + ')'" class="ImgFilm"></div> -->
+                <div class="ImgFilm">
+                    <div class="ImgFilm">
+                        <img [src]='photo' alt="Hình Phim">
+                    </div>
+                    <div class="AlignItem">
+                        <h5><span>Tên Phim:</span>{{inforFilm[0].tenPhim}}</h5>
+                        <p> <span>Đánh Giá:</span> {{inforFilm[0].danhGia}} / 5 </p>
+                        <p> <span>Ngày Ra Rạp:</span> {{inforFilm[0].ngayKhoiChieu | date: 'dd-MM-yyyy'}}</p>
+                        <p> <span>Mô Tả:</span> {{inforFilm[0].moTa}} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content">
+                    <div class="tab-pane tab1 active" id="home">
+                        <div class="infors" *ngIf='groupsGhe'>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="Img">
+                                        <img [src]="cinema[0].logo" alt="HìnhLogo">
+                                    </div>
+                                    <div class="InforCinema" *ngIf='thongTinFLC'>
+                                        <p>{{thongTinFLC.thongTinRap.tenCumRap}}</p>
+                                        <p>{{informLC.diaChi}}</p>
+                                        <p>{{thongTinFLC.ngayChieuGioChieu | date: 'hh:mm a'}}-{{informLC.thongTinPhim.tenRap}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="bookchair" *ngFor="let item of groupsGhe;let i=index">
+                                    <app-chonghe [listGhe]="item" [i]="i" [(counter)]="counterValue"
+                                        (money)="getMoney($event)">
+                                        <!-- [(counter)]="counterValue" -->
+                                    </app-chonghe>
+                                </div>
+                                <hr>
+                                <p>{{this.slgt*this.moneynormal+this.slgv*this.moneyvip}}</p>
+                                <button data-toggle="tab" data-target="#menu1">
+                                    Chọn Ghế
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane container fade" id="menu1">
+                        <div class="row" *ngIf='informLC!=null'>
+                            <div class="col-md-7 pt-3">
+                               <app-datghe [informLC]='informLC'></app-datghe>
+                            </div>
+                            <div class="col-md-5">
+                                <p>{{this.slgt}}</p>
+                                <p>{{this.slgv}}</p>
+                                <p [ngClass]="{'btn btn-danger':cssbtnThanhToan}">
+                                    Thanh Toán</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane container fade" id="menu2">...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 
     <div class="tab-content">
         <div class="tab-pane active" id="home">
             <div class="infors">
@@ -40,23 +104,20 @@
                                     <p>{{informLC.diaChi}}</p>
                                     <p>{{inforFilmandCinema.ngayChieuGioChieu | date: 'hh:mm a'}}-{{informLC.thongTinPhim.tenRap}}
                                     </p>
-
                                 </div>
                             </div>
                             <div class="bookchair" *ngFor="let item of groupsGhe;let i=index">
                                 <app-chonghe [listGhe]="item" [i]="i" [(counter)]="counterValue"
                                     (money)="getMoney($event)">
-                                    <!-- [(counter)]="counterValue" -->
-                                </app-chonghe>
+                                     [(counter)]="counterValue" -->
+    <!-- </app-chonghe> -->
 
-                            </div>
+    <!-- </div>
                             <hr>
                             <p>{{this.slgt*this.moneynormal+this.slgv*this.moneyvip}}</p>
                             <button data-toggle="pill" href="#menu1">
                                 Chọn Ghế
                             </button>
-
-
                         </div>
                     </div>
                 </div>
@@ -73,22 +134,13 @@
                 <div class="col-md-5">
                     <p>{{this.slgt}}</p>
                     <p>{{this.slgv}}</p>
-                    <p
-                        [ngClass]="{'btn btn-danger':cssbtnThanhToan}">
+                    <p [ngClass]="{'btn btn-danger':cssbtnThanhToan}">
                         Thanh Toán</p>
                 </div>
             </div>
-
-
-
-
-
-
-
-
         </div>
         <div class="tab-pane container fade" id="menu2">...</div>
-    </div>
+    </div> -->
 
 
 

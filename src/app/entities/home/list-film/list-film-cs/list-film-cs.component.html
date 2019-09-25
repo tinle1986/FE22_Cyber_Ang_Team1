@@ -14,23 +14,15 @@
             <div class="page-content">
               <div class="container-fluid">
                 <div class="row">
-                  <div
-                    class="col-sm-4"
-                    *ngFor="
-                      let item of listFilm
+                  <div class="col-sm-4" *ngFor="
+                      let item of listFilm.reverse() | slice:2:16
                         | paginate: { itemsPerPage: 9, currentPage: p }
-                    "
-                  >
-                    <app-film [film]="item"> </app-film>
+                    ">
+                    <app-film [film]="item" (Trailer)="getTrailer($event)"> </app-film>
                   </div>
-                  <pagination-controls
-                    class="paging"
-                    (pageChange)="p = $event"
-                  ></pagination-controls>
+                  <pagination-controls class="paging" (pageChange)="p = $event"></pagination-controls>
                   <div class="backnow">
-                    <span id="back-to-top"
-                      ><i class="fas fa-chevron-up"></i
-                    ></span>
+                    <span id="back-to-top"><i class="fas fa-chevron-up"></i></span>
                   </div>
                 </div>
               </div>
@@ -42,5 +34,27 @@
         </div>
       </div>
     </section>
+  </div>
+</div>
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Trailer</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <iframe width="100%" height="450px" [src]="videoUrl" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
   </div>
 </div>

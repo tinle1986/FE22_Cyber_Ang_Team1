@@ -1,0 +1,4 @@
+<ng-container *ngFor="let item of informLC.danhSachGhe; let stt=index">
+    <app-item-ghe [ghe]="item" (eventDatGhe)="booking($event)"></app-item-ghe>
+    <br *ngIf="(stt+1) % 10 === 0">
+</ng-container>

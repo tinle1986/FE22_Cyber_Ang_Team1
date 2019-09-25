@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { ManageListFilmService } from 'src/app/common/services/manage-list-film.service';
 import { Subscription } from 'rxjs';
 import { ShareDataService } from 'src/app/shared/sharing-datas/share-data.service';
@@ -13,9 +14,11 @@ export class ListFilmCsComponent implements OnInit {
   listFilm: Array<any> = [];
   row: number = 0;
   film: number = 3;
+  videoUrl: SafeResourceUrl;
   unsublist = new Subscription();
+  idTrailer: string;
 
-  constructor(private mlfsCS: ManageListFilmService, private sharedata: ShareDataService) { }
+  constructor(private mlfsCS: ManageListFilmService, private sharedata: ShareDataService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.getListFilm();
@@ -24,10 +27,20 @@ export class ListFilmCsComponent implements OnInit {
 
 
   }
+  getTrailer(trailer) {
+    if (trailer) {
+      this.idTrailer = trailer;
+    }
+    if (this.sanitizer.bypassSecurityTrustResourceUrl(this.idTrailer)) {
+      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.idTrailer);
+    }
+  }
   getListFilm() {
     this.unsublist = this.mlfsCS.getListFilmCS().subscribe((data) => {
       console.log(data);
-      this.listFilm = data;
+      if (data) {
+        this.listFilm = data;
+      }
       this.sharedata.sharingDataListMovie(data);
     })
   }
