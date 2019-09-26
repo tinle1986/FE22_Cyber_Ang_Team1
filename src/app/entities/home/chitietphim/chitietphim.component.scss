@@ -1,3 +1,7 @@
+$color-main:#fe7900;
+$color-black:#000;
+$color-gray:#666;
+$color-background:#f8f8f8;
 .ChiTietPhim{
     .page-header{
         .HinhBG{
@@ -10,8 +14,135 @@
         .PageMain{
             border: solid transparent 1px;
             padding: 5% 0%;
-
+            .moTaPhim{
+                p,.tenRap{
+                    color:$color-gray;
+                    font-size: 1rem;
+                    word-spacing:normal;
+                    width: calc(100% - 100px);
+                    margin: 0;
+                    font-weight: 500;
+                }
+                .tieuDePhim{
+                    padding-bottom: 5%;
+                }
+                .tenPhim{
+                    color: $color-black;
+                    font-weight: 500;
+                }
+                .tenPhim:hover{
+                    color: $color-main !important; 
+                    text-decoration: none;
+                }
+                .Head{
+                    width: 148px !important;
+                    display: inline-block;
+                    color: $color-black;
+                    font-size: 18px;
+                    margin: 0;
+                    margin-right: 3%;
+                    font-weight: 500;
+                    line-height: 40px;
+                }
+            }
         }
+        .rate{
+            width: 90%;
+            margin: 8% 0;
+            border-top: 1px #f1f1f1 solid;
+            border-bottom: 1px #f1f1f1 solid;
+            padding: 3% 0;
+            .left{
+                align-items: center;
+                justify-content: center;
+                .danhGia{
+                    margin-left: 0%;
+                    .rate1{
+                        background: $color-main;
+                        border-radius: 50%;
+                        color: #fff;
+                        font-size: 15px;
+                        font-weight: bold;
+                        height: 45px;
+                        margin-left: 10px;
+                        line-height: 45px;
+                        text-align: center;
+                        text-transform: uppercase;
+                        display: inline-block;
+                        width: 45px;
+                    }
+                }
+            }
+            .right{
+                align-items: center;
+                float: right;
+                margin-top: 0px;
+                padding: auto;
+                .Head1{
+                    color: $color-black;
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+                .iconrow{
+                    padding: auto;
+                    .icon{
+                        color: $color-gray;
+                        background: #fff none repeat scroll 0 0;
+                        height: 42px;
+                        width: 42px;
+                        border-radius: 50%;
+                        font-size: 20px;
+                        text-align: center;
+                        padding-top: 5px;
+                        padding: auto;
+                        margin: 10px 0px;   
+                    }
+                    .icon:hover{
+                        background: $color-main none repeat scroll 0 0;
+                        i{
+                            color: white;
+                        }
+                    }
+
+                }
+            }
+        }
+        .tieuDe{
+            display: inline;
+            padding-bottom: 1%;
+            //  width: 90%;
+             color: $color-main;
+             border-bottom: $color-main dashed 2px;
+        }
+        .Showtime{
+            .chonRap{
+                font-weight: bold;
+                padding: 4% 2%;
+                justify-content: center;
+                background-color: $color-background;
+                .colori{
+                    color: $color-main;
+                    padding:0 5px;
+                }
+            }
+            .myTabPane{
+                width: 100%;
+                position: relative;
+                padding: 5% 0%;
+                .myNav{
+                    top: -10%;
+                    left: 30%;
+                    align-items: center;
+                    justify-items: center;
+                    text-align: center;
+                    margin: auto;
+                    width: 100%;
+                }
+            }
+            
+        }
+        
+
 
     }
 

@@ -21,7 +21,7 @@ const routes: Routes = [
         path: "chitietphim",
         loadChildren: "./chitietphim/chitietphim.module#ChitietphimModule"
       },
-      { path: "tintuc", loadChildren: "./tintuc/tintuc.module#TintucModule" },
+      // { path: "tintuc", loadChildren: "./tintuc/tintuc.module#TintucModule" },
       { path: "sign-up", component: SignUpPageComponent }
     ]
   }

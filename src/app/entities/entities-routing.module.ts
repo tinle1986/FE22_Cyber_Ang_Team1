@@ -11,6 +11,14 @@ const routes: Routes = [
         path:"",
         loadChildren:"./home/home.module#HomeModule"
       },
+      {
+        path:"book-ticket",
+        loadChildren:"./datve/datve.module#DatveModule"
+      },
+      {
+        path:"admin",
+        loadChildren:"./admin/admin.module#AdminModule"
+      },
     ]
     // children: [
     //   //Trang Home

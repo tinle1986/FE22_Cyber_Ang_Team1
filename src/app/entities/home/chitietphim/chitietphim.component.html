@@ -1,54 +1,44 @@
-<div class="ChiTietPhim" *ngIf="film != null">
+<div class="ChiTietPhim" *ngIf="film!=null">
   <section class="page-header">
-    <img
-      src="./../../../../assets/images/galaxy2.jpg"
-      width="100%"
-      height="450px"
-      alt="HìnhNền"
-      class="HinhBG"
-    />
+    <img src="./../../../../assets/images/galaxy2.jpg" width="100%" height="450px" alt="HìnhNền" class="HinhBG">
   </section>
   <section class="page-bottom">
     <div class="container">
       <div class="row">
         <div class="col-md-8 PageMain">
           <div class="row">
-            <div class="col-md-4">
-              <img [src]="film.hinhAnh" alt="" />
+            <div class="col-md-4 hinhPhim">
+              <img [src]="film.hinhAnh" alt="">
             </div>
-            <div class="col-md-8">
-              <h1>
-                <a href="#abc">{{ film.tenPhim }}</a>
-              </h1>
-              <p><span class="Head">Mô Tả:</span> {{ film.moTa }}</p>
-              <p>
-                <span class="Head">Ngày Khởi Chiếu:</span>
-                {{ film.ngayKhoiChieu | date: "dd-MM-yyyy" }}
-              </p>
+            <div class="col-md-8 moTaPhim">
+              <h1 class='tieuDePhim'><a href="#abc" class="tenPhim">{{film.tenPhim}}</a></h1>
               <p><span class="Head">Ngôn Ngữ: </span> Tiếng Anh, Tiếng Việt</p>
               <div class="cinema">
-                <span class="Head">Rạp Chiếu Phim: </span>
-                <span *ngFor="let item of inforLC.heThongRapChieu">
-                  {{ item.maHeThongRap }}.
+                <span class="Head">Rạp Chiếu Phim: </span> <span class="tenRap"
+                  *ngFor="let item of inforLC.heThongRapChieu">
+                  {{item.maHeThongRap}}
                 </span>
               </div>
+              <p><span class="Head">Ngày Khởi Chiếu:</span> {{film.ngayKhoiChieu  | date: 'dd-MM-yyyy'}}
+              </p>
+              <p><span class="Head">Mô Tả:</span> {{film.moTa}}</p>
+
 
               <!-- <p><span>Rạp Chiếu Phim:</span> {{inforLC.heThongRapChieu.length}} rạp</p> -->
               <!-- <p><span>Thời Lượng:</span>
                                 {{inforLC.heThongRapChieu[0].cumRapChieu[0].lichChieuPhim[0].thoiLuong}}</p> -->
-              <hr />
               <div class="row rate container">
-                <div class="left">
+                <div class="left col-md-5 row">
+                  <div class="star-rating">
+                    <star-rating value="4" checkedcolor="#fe7900" uncheckedcolor="#666" size="18px" readonly="false"
+                      (rate)="onRate($event)"></star-rating>
+                  </div>
                   <div class="danhGia">
-                    <p>
-                      Đánh Giá:
-                      <span class="rate">{{ this.inforLC.danhGia }}</span
-                      >/5
-                    </p>
+                    <p><span class="rate1">{{this.ratenow|number:0}} / 5</span></p>
                   </div>
                 </div>
-                <div class="right row ml-5">
-                  <label>Share:</label>
+                <div class="right col-md-7 d-flex">
+                  <span class="Head1">Share:</span>
                   <div class="iconrow d-flex">
                     <a class="icon"> <i class="fab fa-facebook-f"></i></a>
                     <a class="icon"> <i class="fab fa-twitter-square"></i></a>
@@ -57,66 +47,74 @@
                   </div>
                 </div>
               </div>
-              <hr />
             </div>
           </div>
-          <div class="trailer pt-5">
-            <h1>Trailer</h1>
-            <br />
+          <div class="trailer pt-3">
+            <h1 class="tieuDe">Trailer</h1>
+            <br>
+            <br>
+            <br>
             <div id="myCode">
-              <iframe
-                width="660"
-                height="415"
-                [src]="videoUrl"
-                frameborder="0"
+              <iframe width="90%" height="415" [src]="videoUrl" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
+                allowfullscreen></iframe>
             </div>
           </div>
           <div class="container pt-5 Showtime">
-            <h1>Showtime</h1>
+            <h1 class="tieuDe">Showtime</h1>
             <div class="row pt-2">
               <div class="col-md-4">
-                <p><i class="fas fa-film"></i> SELECT A CINEMA</p>
-                <ul
-                  class="nav flex-column"
-                  *ngFor="let cinema of cinemaplay; let i = index"
-                >
-                  <app-cinema
-                    [cinema]="cinema"
-                    [i]="i"
-                    (eventTabs)="getTabs($event)"
-                    (eventNameCinema)="getNameCinemaFromCinema($event)"
-                  >
+                <h6 class="chonRap mt-5 mb-2"> <i class="fas fa-film colori pl-2 pr-2"></i> SELECT A CINEMA</h6>
+                <ul class="nav flex-column row" *ngFor="let cinema of cinemaplay;let i = index">
+                  <app-cinema [cinema]="cinema" [i]="i" (eventTabs)="getTabs($event)"
+                    (eventNameCinema)="getNameCinemaFromCinema($event)">
+
                   </app-cinema>
                 </ul>
               </div>
-              <div class="col-md-8 pt-5">
+              <div class="col-md-8 pt-3">
                 <div class="tab-content">
-                  <div class="tab-pane container active" id="{{ indexTabs }}">
-                    {{ this.indexTabs }}
-                    {{ this.cinemaName }}
+                  <div class="row">
+                    <div class="tab-pane myTabPane container col-md-4 active" id={{indexTabs}}>
+                      <!-- {{this.indexTabs}}
+                                            {{this.cinemaName}} -->
+                      <ul class="nav nav-pills myNav col-12" *ngFor="let item of groupsofcinemadays;let i=index">
+                        <app-cinemadays [cinemadays]="item" [i]="i" (event)="getTabsAndArrayCinema($event)">
+                        </app-cinemadays>
+                      </ul>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="tab-content">
+                        <div class="tab-pane container active col-md-12" id={{indexTabs2}}>
+                          <div class="ShowInforCnmDay" *ngFor="let item of groupshowcinemaday">
+                            <app-itemcinema [hethongrap]="this.thongtincumrap" [cinema]='this.cinemaName' [itemcinema]="item">
+
+                            </app-itemcinema>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
                   </div>
+
+
                 </div>
               </div>
             </div>
             <div class="Comment pt-5">
-              <h3>WRITE A COMMENT</h3>
-              <p class="signin ">Please, Sign In Before Comment !</p>
+              <h3 class="tieuDe">WRITE A COMMENT</h3>
+              <p class="signin pt-5 ">Please, Sign In Before Comment !</p>
 
               <div class="form-group">
                 <label for="comment">Comment:</label>
                 <textarea class="form-control" rows="5" id="comment"></textarea>
               </div>
               <p class="text-right">
-                <button type="button" class="btn btn-primary">
-                  POST COMMET
-                </button>
+                <button type="button" class="btn btn-primary">POST COMMET</button>
               </p>
             </div>
             <div class="ShowComment">
-              <h3>Comment</h3>
+              <h3 class="tieuDe">Comment</h3>
             </div>
           </div>
         </div>
@@ -124,6 +122,8 @@
           <app-ads-and-infor></app-ads-and-infor>
         </div>
       </div>
+
     </div>
+
   </section>
 </div>

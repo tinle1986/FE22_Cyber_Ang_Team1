@@ -48,6 +48,20 @@ export class DataserviceService {
 
     );
   }
+  delete(uri: string): Observable<any> {
+    return this.http.delete(urlApi + "/" + uri).pipe(
+      tap(
+        () => {
+          // SUCCESS
+        },
+        catchError(err => {
+          // DEFEAT
+          return this.handleErr(err);
+        })
+      )
+    );
+
+  }
   handleErr(err: any) {
     return err;
   }

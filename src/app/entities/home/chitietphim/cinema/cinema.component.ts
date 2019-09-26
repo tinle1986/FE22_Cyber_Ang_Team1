@@ -1,6 +1,7 @@
 import { Component, OnInit,Input,Output } from '@angular/core';
-
+import { Router} from '@angular/router'
 import { EventEmitter } from '@angular/core';
+import { ShareDataService } from 'src/app/shared/sharing-datas/share-data.service';
 
 @Component({
   selector: 'app-cinema',
@@ -13,15 +14,18 @@ export class CinemaComponent implements OnInit {
   @Output() eventTabs= new EventEmitter();
   @Output() eventNameCinema= new EventEmitter();
 
-  constructor() { }
+  constructor(private sharedata :ShareDataService) { }
 
   ngOnInit() {
    
+    
+    
     
   }
   idTabContents(){
     this.eventTabs.emit(this.i);
     this.eventNameCinema.emit(this.cinema.maHeThongRap);
+    this.sharedata.sharingInforRapChieu(this.cinema);
   }
 
 }
