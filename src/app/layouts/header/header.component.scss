@@ -118,6 +118,9 @@
 a.dropdown-toggle {
   color: black;
 }
+.dropdown > .dropdown-toggle:active {
+  pointer-events: none;
+}
 #login-dp {
   min-width: 350px;
   padding: 14px 14px 0;
