@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "src/app/shared/services/data.service";
+import { Router } from '@angular/router';
 
 // declare var jquery:any;
 declare var $: any;
@@ -17,10 +18,15 @@ export class HeaderComponent implements OnInit {
   loginStatus: boolean = false;
   localUser = [];
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService,private router:Router) {}
 
   ngOnInit() {
+    const token = localStorage.getItem("adminToken");
+    if (token) {
+      this.router.navigate(["admin"]);
+    }
     this.getLocalStore();
+
 
     // console.log(this.localUser);
   }
@@ -39,6 +45,10 @@ export class HeaderComponent implements OnInit {
           // alert("Logged in succesfully");
           this.loginStatus = true;
           this.localUser = data;
+          if(data.maLoaiNguoiDung=="QuanTri"){
+            localStorage.setItem('adminToken',JSON.stringify(data.accessToken));
+            this.router.navigate(["admin"]);
+          }
           localStorage.setItem("localUser", JSON.stringify(data));
         }
       },
@@ -62,8 +72,10 @@ export class HeaderComponent implements OnInit {
       // console.log(this.localUser);
     }
   }
-
-  // clickLogin() {
-  //   $("#dropdownLogin").dropdown("toggle");
-  // }
+  clickLogin() {
+    //  $("#dropdownLogin").dropdown("toggle");
+    // window.open('lead_data.php?leadid=1','myWin','width=400,height=650')
+    $("#loginDp").css({'display':'block'});
+    
+  }
 }

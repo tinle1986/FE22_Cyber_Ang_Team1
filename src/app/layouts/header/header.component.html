@@ -15,12 +15,7 @@
             <ul class="navbar-nav">
               <!-- Dropdown -->
               <li class="nav-item dropdown">
-                <a
-                  class="nav-link my-dropdown-toggle"
-                  href="#"
-                  id="navbardrop"
-                  data-toggle="dropdown"
-                >
+                <a class="nav-link my-dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                   TRANG CHỦ
                 </a>
                 <div class="dropdown-menu animate slideIn">
@@ -32,12 +27,7 @@
 
               <!-- Dropdown -->
               <li class="nav-item dropdown">
-                <a
-                  class="nav-link my-dropdown-toggle"
-                  href="#"
-                  id="navbardrop"
-                  data-toggle="dropdown"
-                >
+                <a class="nav-link my-dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                   PHIM
                 </a>
                 <div class="dropdown-menu animate slideIn">
@@ -49,12 +39,7 @@
 
               <!-- Dropdown -->
               <li class="nav-item dropdown">
-                <a
-                  class="nav-link my-dropdown-toggle"
-                  href="#"
-                  id="navbardrop"
-                  data-toggle="dropdown"
-                >
+                <a class="nav-link my-dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                   LỊCH CHIẾU
                 </a>
                 <div class="dropdown-menu animate slideIn">
@@ -66,12 +51,7 @@
 
               <!-- Dropdown -->
               <li class="nav-item dropdown">
-                <a
-                  class="nav-link my-dropdown-toggle"
-                  href="#"
-                  id="navbardrop"
-                  data-toggle="dropdown"
-                >
+                <a class="nav-link my-dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                   TOP PHIM
                 </a>
                 <div class="dropdown-menu animate slideIn">
@@ -87,9 +67,7 @@
                   <p class="navbar-text">Hi, {{ localUser.taiKhoan }}</p>
                 </li>
                 <li>
-                  <a routerLink="/" (click)="logout()"
-                    ><b><i class="fas fa-sign-out-alt"></i></b
-                  ></a>
+                  <a routerLink="/" (click)="logout()"><b><i class="fas fa-sign-out-alt"></i></b></a>
                 </li>
               </ng-container>
               <!-- End of User login area -->
@@ -103,49 +81,28 @@
 
 <ng-template #notLogin>
   <!-- login button -->
-  <li><p class="navbar-text">Already have an account?</p></li>
+  <li>
+    <p class="navbar-text">Already have an account?</p>
+  </li>
   <li class="dropdown login-btn">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-      ><b><i class="far fa-user"></i> </b> <span class="caret"></span
-    ></a>
+    <a href="#" class="dropdown-toggle" id='dropdownLogin' data-toggle="dropdown"><b><i class="far fa-user"></i> </b>
+      <span class="caret"></span></a>
     <ul id="login-dp" class="dropdown-menu animate slideIn">
       <li>
         <div class="row">
           <div class="col-md-12">
             Login via
             <div class="social-buttons">
-              <a href="#" class="btn btn-fb"
-                ><i class="fab fa-facebook-f"></i> Facebook</a
-              >
-              <a href="#" class="btn btn-tw"
-                ><i class="fab fa-twitter"></i> Twitter</a
-              >
+              <a href="#" class="btn btn-fb"><i class="fab fa-facebook-f"></i> Facebook</a>
+              <a href="#" class="btn btn-tw"><i class="fab fa-twitter"></i> Twitter</a>
             </div>
             or
-            <form
-              class="form"
-              role="form"
-              method="post"
-              action="login"
-              accept-charset="UTF-8"
-              id="login-nav"
-              #loginForm="ngForm"
-              (ngSubmit)="login(loginForm.value)"
-            >
+            <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav"
+              #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
               <div class="form-group">
                 <label class="sr-only" for="">User Name</label>
-                <input
-                  type="text"
-                  autocomplete="username"
-                  placeholder="User Name"
-                  minlength="6"
-                  maxlength="15"
-                  class="form-control"
-                  name="userName"
-                  #UserName="ngModel"
-                  ngModel
-                  required
-                />
+                <input type="text" autocomplete="username" placeholder="User Name" minlength="6" maxlength="15"
+                  class="form-control" name="userName" #UserName="ngModel" ngModel required />
 
                 <!-- check username validation -->
                 <!-- <div
@@ -171,17 +128,8 @@
               </div>
               <div class="form-group">
                 <label class="sr-only" for="">Password</label>
-                <input
-                  type="password"
-                  autocomplete="current-password"
-                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                  class="form-control"
-                  placeholder="Password"
-                  name="password"
-                  #Password="ngModel"
-                  ngModel
-                  required
-                />
+                <input type="password" autocomplete="current-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                  class="form-control" placeholder="Password" name="password" #Password="ngModel" ngModel required />
                 <!-- check password validation -->
                 <!-- <div
                   *ngIf="
@@ -203,13 +151,8 @@
                 </div>
               </div>
               <div class="form-group">
-                <button
-                  type="submit"
-                  class="btn btn-primary btn-block"
-                  [routerLink]="['/']"
-                  id="btnLogin"
-                  (click)="(clickLogin)"
-                >
+                <button type="submit" class="btn btn-primary btn-block" [routerLink]="['/']" id="btnLogin"
+                  (click)="(clickLogin)">
                   Sign in
                 </button>
               </div>

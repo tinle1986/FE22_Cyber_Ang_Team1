@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, from } from 'rxjs';
+import { Observable, throwError  } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { environment } from './../../../environments/environment';
 
@@ -49,16 +49,15 @@ export class DataserviceService {
     );
   }
   delete(uri: string): Observable<any> {
-    return this.http.delete(urlApi + "/" + uri).pipe(
+    return this.http.delete(urlApi + "/" + uri,httpOptions).pipe(
       tap(
         () => {
           // SUCCESS
-        },
-        catchError(err => {
-          // DEFEAT
-          return this.handleErr(err);
-        })
-      )
+        }),
+      catchError(err => {
+        // DEFEAT
+        return this.handleErr(err);
+      })
     );
 
   }

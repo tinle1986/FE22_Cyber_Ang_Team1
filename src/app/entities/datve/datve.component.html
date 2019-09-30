@@ -3,19 +3,20 @@
     <div class="navs">
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" data-target="#home">01. CHỌN LOẠI VÉ</a>
+                <a class="nav-link active btn1" (click)='removeActive()' data-toggle="tab" data-target="#home">01. CHỌN
+                    LOẠI VÉ</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link">02. CHỌN GHẾ & THANH TOÁN</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" data-target="#menu2">03. KẾT QUẢ ĐẶT VÉ</a>
+                <a class="nav-link">03. KẾT QUẢ ĐẶT VÉ</a>
             </li>
         </ul>
     </div>
     <div class="myTabBookTicKet pt-4">
         <div class="row">
-            <div class="col-md-4 inForFILM"> 
+            <div class="col-md-4 inForFILM">
                 <!-- <div [style.background-image]="'url(' + photo + ')'" class="ImgFilm"></div> -->
                 <div class="ImgFilm">
                     <div class="ImgFilm">
@@ -32,7 +33,7 @@
             <div class="col-md-8">
                 <div class="tab-content">
                     <div class="tab-pane tab1 active" id="home">
-                        <div class="infors" *ngIf='groupsGhe'>
+                        <div class="infors" *ngIf='cinema&&informLC'>
                             <div class="container">
                                 <div class="row">
                                     <div class="Img">
@@ -53,7 +54,7 @@
                                 </div>
                                 <hr>
                                 <p>{{this.slgt*this.moneynormal+this.slgv*this.moneyvip}}</p>
-                                <button data-toggle="tab" data-target="#menu1">
+                                <button class="btn1" data-toggle="tab" data-target="#menu1">
                                     Chọn Ghế
                                 </button>
                             </div>
@@ -62,86 +63,48 @@
                     <div class="tab-pane container fade" id="menu1">
                         <div class="row" *ngIf='informLC!=null'>
                             <div class="col-md-7 pt-3">
-                               <app-datghe [informLC]='informLC'></app-datghe>
+                                <app-datghe [informLC]='informLC' [slgv]='slgv' [slgt]='slgt'
+                                    (status)='getStatus($event)'>
+
+                                </app-datghe>
                             </div>
                             <div class="col-md-5">
                                 <p>{{this.slgt}}</p>
                                 <p>{{this.slgv}}</p>
-                                <p [ngClass]="{'btn btn-danger':cssbtnThanhToan}">
+                                <p [ngClass]="{'btn btn-danger':status}" class="btn1" data-toggle="tab"
+                                    data-target="#menu2">
                                     Thanh Toán</p>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane container fade" id="menu2">...</div>
+                    <div class="tab-pane container fade" id="menu2">
+                        <div class="CinemaDone">
+                            <div class="row">
+                                <div class="InforTicket">
+                                    <p><span>Tên Rạp: </span>{{thongTinFLC.thongTinRap.tenRap}}</p>
+                                    <p><span>Ngày Chiếu: </span>{{thongTinFLC.ngayChieuGioChieu| date }}</p>
+                                    <p><span>Suất Chiếu: </span>{{thongTinFLC.ngayChieuGioChieu| date:'shortTime' }}
+                                    </p>
+                                    <form>
+                                        <div class="row">
+                                            <h6 class="pt-1">Phương Thức Thanh Toán: </h6>
+                                            <!-- Large -->
+                                            <select name="cars" class="custom-select-sm ml-2">
+                                                <option value="TTNĐ" selected>Thanh Toán Nội Địa</option>
+                                                <option value="fiat">VISA</option>
+                                                <option value="audi">MasterCard </option>
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- 
-    <div class="tab-content">
-        <div class="tab-pane active" id="home">
-            <div class="infors">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div [style.background-image]="'url(' + photo + ')'" class="ImgFilm">
-                            <div class="AlignItem">
-                                <h5><span>Tên Phim:</span>{{inforFilm[0].tenPhim}}</h5>
-                                <p> <span>Đánh Giá:</span> {{inforFilm[0].danhGia}} / 5 </p>
-                                <p> <span>Ngày Ra Rạp:</span> {{inforFilm[0].ngayKhoiChieu | date: 'dd-MM-yyyy'}}</p>
-                                <p> <span>Mô Tả:</span> {{inforFilm[0].moTa}} </p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-8" *ngIf='groupsGhe'>
-                        <div class="container">
-                            <div class="row">
-                                <div class="Img">
-                                    <img [src]="cinema.logo" alt="HìnhLogo">
-                                </div>
-                                <div class="InforCinema" *ngIf='inforFilmandCinema'>
-                                    <p>{{inforFilmandCinema.thongTinRap.tenCumRap}}</p>
-                                    <p>{{informLC.diaChi}}</p>
-                                    <p>{{inforFilmandCinema.ngayChieuGioChieu | date: 'hh:mm a'}}-{{informLC.thongTinPhim.tenRap}}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="bookchair" *ngFor="let item of groupsGhe;let i=index">
-                                <app-chonghe [listGhe]="item" [i]="i" [(counter)]="counterValue"
-                                    (money)="getMoney($event)">
-                                     [(counter)]="counterValue" -->
-    <!-- </app-chonghe> -->
-
-    <!-- </div>
-                            <hr>
-                            <p>{{this.slgt*this.moneynormal+this.slgv*this.moneyvip}}</p>
-                            <button data-toggle="pill" href="#menu1">
-                                Chọn Ghế
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane container fade" id="menu1">
-            <div class="row" *ngIf='informLC!=null'>
-                <div class="col-md-7 pt-3">
-                    <ng-container *ngFor="let item of informLC.danhSachGhe; let stt=index">
-                        <app-item-ghe [ghe]="item" (eventDatGhe)="booking($event)"></app-item-ghe>
-                        <br *ngIf="(stt+1) % 10 === 0">
-                    </ng-container>
-                </div>
-                <div class="col-md-5">
-                    <p>{{this.slgt}}</p>
-                    <p>{{this.slgv}}</p>
-                    <p [ngClass]="{'btn btn-danger':cssbtnThanhToan}">
-                        Thanh Toán</p>
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane container fade" id="menu2">...</div>
-    </div> -->
-
-
-
 </div>

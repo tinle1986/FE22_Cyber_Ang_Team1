@@ -35,18 +35,16 @@ export class DatveComponent implements OnInit {
   mangGheDangChon: any[] = new Array();
   mangGheDangChonPhanLoai: any[] = new Array();
 
-  cssbtnThanhToan: boolean = false;
+  status: boolean = false;
 
   lichChieuofFilm: any;
   groupFind: any;
 
   groupCinema: any[] = new Array();
   thongTinFLC: any;
+  
 
 
-  idTab1: any;
-  idTab2: any;
-  idTab3: any;
 
 
 
@@ -54,6 +52,7 @@ export class DatveComponent implements OnInit {
 
 
   ngOnInit() {
+
     // this.getInforFilmfromdatashare();
     this.getParamsUrl();
     this.inforCinema();
@@ -165,41 +164,43 @@ export class DatveComponent implements OnInit {
     }
     // this.money=this.slgt*this.moneynormal+this.slgv*this.moneyvip;
   }
-  booking(objGhe) {
-    var conVip: boolean = false;
-    var conNor: boolean = false;
-    if (objGhe.trangThaiChon) {
-      this.mangGheDangChon.push(objGhe.ghe);
-    } else {
-      let viTri = this.mangGheDangChon.findIndex(item => {
-        return item.SoGhe === objGhe.ghe.SoGhe;
-      });
-      this.mangGheDangChon.splice(viTri, 1);
-    }
-    // console.log(this.mangGheDangChon);
-    const groupve = this.mangGheDangChon.reduce((obj, item) => {
-      const loaive = item.loaiGhe;
-      obj[loaive] = obj[loaive] || [];
-      obj[loaive].push(item);
-      return obj;
-    }, {});
-    this.mangGheDangChonPhanLoai = Object.keys(groupve).map(function (key) {
-      return { loaive: key, nhomve: groupve[key] };
-    });
-    // console.log(this.mangGheDangChonPhanLoai);
-    if (this.mangGheDangChonPhanLoai[0] && this.mangGheDangChonPhanLoai[0].nhomve.length == this.slgv) {
-      conVip = true;
-    }
-    if (this.mangGheDangChonPhanLoai[1] && this.mangGheDangChonPhanLoai[1].nhomve.length == this.slgt) {
-      conNor = true;
-    }
-    this.cssbtnThanhToan = conVip && conNor;
-    console.log(this.cssbtnThanhToan);
+  // booking(objGhe) {
+  //   var conVip: boolean = false;
+  //   var conNor: boolean = false;
+  //   if (objGhe.trangThaiChon) {
+  //     this.mangGheDangChon.push(objGhe.ghe);
+  //   } else {
+  //     let viTri = this.mangGheDangChon.findIndex(item => {
+  //       return item.SoGhe === objGhe.ghe.SoGhe;
+  //     });
+  //     this.mangGheDangChon.splice(viTri, 1);
+  //   }
+  //   // console.log(this.mangGheDangChon);
+  //   const groupve = this.mangGheDangChon.reduce((obj, item) => {
+  //     const loaive = item.loaiGhe;
+  //     obj[loaive] = obj[loaive] || [];
+  //     obj[loaive].push(item);
+  //     return obj;
+  //   }, {});
+  //   this.mangGheDangChonPhanLoai = Object.keys(groupve).map(function (key) {
+  //     return { loaive: key, nhomve: groupve[key] };
+  //   });
+  //   // console.log(this.mangGheDangChonPhanLoai);
+  //   if (this.mangGheDangChonPhanLoai[0] && this.mangGheDangChonPhanLoai[0].nhomve.length == this.slgv) {
+  //     conVip = true;
+  //   }
+  //   if (this.mangGheDangChonPhanLoai[1] && this.mangGheDangChonPhanLoai[1].nhomve.length == this.slgt) {
+  //     conNor = true;
+  //   }
+  //   this.cssbtnThanhToan = conVip && conNor;
+  //   console.log(this.cssbtnThanhToan);
+  // }
+  removeActive() {
+    $(".btn1").removeClass("active");
+
   }
-  // getIndex1(){
-  //   this.idTab1='1';
-  // }
-  // getIndex2(){
-  //   this.idTab2='2';
-  // }
+  getStatus(status){
+    this.status=status;
+    
+  }
 }

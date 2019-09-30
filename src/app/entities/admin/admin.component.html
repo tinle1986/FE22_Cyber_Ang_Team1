@@ -85,7 +85,7 @@
                     <th>Tùy Chỉnh</th>
                 </thead>
                 <tbody id="tblDanhSachNguoiDung">
-                    <tr *ngFor='let item of listUser.reverse() | slice:2:16;let i =index'>
+                    <tr *ngFor='let item of listUser.reverse() ;let i =index'>
                         <!-- <app-item-user [user]="item" [i]="i">
 
                         </app-item-user> -->
@@ -160,7 +160,8 @@
                         </td>
                         <td class="myTDCSS">
                             <button class="btn btn-primary m-1 align-items-center">Cập Nhật</button>
-                            <button class="btn btn-danger m-1 align-items-center" (click)='deleteFilm(item.maPhim)'>Xóa</button>
+                            <button class="btn btn-danger m-1 align-items-center"
+                                (click)='deleteFilm(item.maPhim)'>Xóa</button>
                         </td>
                     </tr>
                 </tbody>
@@ -185,36 +186,41 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body">
-                <div class="form-group">
-                    <label>Tài khoản</label>
-                    <input id="TaiKhoan" class="form-control" placeholder="Nhập vào tài khoản" />
-                </div>
-                <div class="form-group">
-                    <label>Họ tên</label>
-                    <input id="HoTen" class="form-control" placeholder="Nhập vào họ tên" />
-                </div>
-                <div class="form-group">
-                    <label>Mật khẩu</label>
-                    <input id="MatKhau" class="form-control" placeholder="Nhập vào mật khẩu" type="password" />
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input id="Email" class="form-control" placeholder="Nhập vào Email" />
-                </div>
-                <div class="form-group">
-                    <label>Số điện thoại</label>
-                    <input id="SoDienThoai" class="form-control" placeholder="Nhập vào số điện thoại" />
-                </div>
-                <div class="form-group">
-                    <label for="">Loại Người Dùng: </label>
-                    <select class="form-control" id="loaiNguoiDung">
-                        <option value="KhachHang">Khách Hàng</option>
-                        <option value="QuanTri">Quản Trị</option>
-                    </select>
-                </div>
+                <form  #addUser="ngForm" (ngSubmit)="submitUser(addUser.value)">
+                    <div class="form-group">
+                        <label>Tài khoản</label>
+                        <input name="taiKhoan" class="form-control" placeholder="Nhập vào tài khoản" ngModel />
+                    </div>
+                    <div class="form-group">
+                        <label>Họ tên</label>
+                        <input name="hoTen" class="form-control" placeholder="Nhập vào họ tên" ngModel />
+                    </div>
+                    <div class="form-group">
+                        <label>Mật khẩu</label>
+                        <input name="matKhau" class="form-control" placeholder="Nhập vào mật khẩu" type="password"
+                            ngModel />
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input name="email" class="form-control" type="email" placeholder="Nhập vào Email" ngModel />
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại</label>
+                        <input name="soDt" class="form-control" placeholder="Nhập vào số điện thoại" ngModel />
+                    </div>
+                    <div class="form-group">
+                        <label for="sell">Loại Người Dùng: </label>
+                        <select class="form-control" name="maLoaiNguoiDung" [(ngModel)]="optionSelect">
+                            <option value="KhachHang">Khách Hàng</option>
+                            <option value="QuanTri">Quản Trị</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Thêm Tài Khoản</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </form>
             </div>
             <!-- Modal footer -->
-            <div class="modal-footer"></div>
+
         </div>
     </div>
 </div>
