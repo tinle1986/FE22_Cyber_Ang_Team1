@@ -1,29 +1,29 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { SlickCarouselComponent } from "ngx-slick-carousel";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SlickCarouselComponent } from 'ngx-slick-carousel';
 
 // declare var $: any;
 
 @Component({
-  selector: "app-carousel03",
-  templateUrl: "./carousel03.component.html",
-  styleUrls: ["./carousel03.component.scss"]
+  selector: 'app-carousel03',
+  templateUrl: './carousel03.component.html',
+  styleUrls: ['./carousel03.component.scss']
 })
 export class Carousel03Component implements OnInit {
-  @ViewChild("slickModal", { static: false })
+  @ViewChild('slickModal', { static: false })
   slickModal: SlickCarouselComponent;
   slides = [
-    { img: "http://placehold.it/350x150/000000" },
-    { img: "http://placehold.it/350x150/111111" },
-    { img: "http://placehold.it/350x150/333333" },
-    { img: "http://placehold.it/350x150/000000" },
-    { img: "http://placehold.it/350x150/111111" },
-    { img: "http://placehold.it/350x150/333333" },
-    { img: "http://placehold.it/350x150/666666" }
+    { img: 'http://placehold.it/350x150/000000' },
+    { img: 'http://placehold.it/350x150/111111' },
+    { img: 'http://placehold.it/350x150/333333' },
+    { img: 'http://placehold.it/350x150/000000' },
+    { img: 'http://placehold.it/350x150/111111' },
+    { img: 'http://placehold.it/350x150/333333' },
+    { img: 'http://placehold.it/350x150/666666' }
   ];
   slideConfig = {
     centerMode: true,
     // autoplay: true,
-    centerPadding: "60px",
+    centerPadding: '60px',
     slidesToShow: 3,
     arrows: true,
     responsive: [
@@ -32,7 +32,7 @@ export class Carousel03Component implements OnInit {
         settings: {
           arrows: true,
           centerMode: true,
-          centerPadding: "40px",
+          centerPadding: '40px',
           slidesToShow: 3
         }
       },
@@ -41,7 +41,7 @@ export class Carousel03Component implements OnInit {
         settings: {
           arrows: true,
           centerMode: true,
-          centerPadding: "40px",
+          centerPadding: '40px',
           slidesToShow: 1
         }
       }
@@ -79,11 +79,11 @@ export class Carousel03Component implements OnInit {
   // }
 
   slickInit(e) {
-    console.log("slick initialized");
+    console.log('slick initialized');
   }
 
   breakpoint(e) {
-    console.log("breakpoint");
+    console.log('breakpoint');
   }
 
   // afterChange(e) {
