@@ -31,7 +31,7 @@
     }
 
     .icon-user {
-      display: inline-block;
+      // display: inline-block;
       float: left;
       margin-right: 10px;
       width: 44px;
@@ -80,6 +80,7 @@
     color-stop(100%, #f1bc00)
   );
   background: -webkit-linear-gradient(left, #bb511e 32%, #f1bc00 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
