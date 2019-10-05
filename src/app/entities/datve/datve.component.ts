@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataserviceService } from 'src/app/common/services/dataservice.service';
 import { ShareDataService } from 'src/app/shared/sharing-datas/share-data.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-datve',
   templateUrl: './datve.component.html',
@@ -13,7 +13,7 @@ export class DatveComponent implements OnInit {
   // selectedwallet = this.coinwallet[0];
 
   iDfilm: any;
-  maLC: any;
+  maLC: number;
   nameFilm: any;
   idRap: any;
 
@@ -42,13 +42,17 @@ export class DatveComponent implements OnInit {
 
   groupCinema: any[] = new Array();
   thongTinFLC: any;
-  
+  formatGheArray: any[] = new Array();
+  ghePost: any;
 
 
 
 
 
-  constructor(private actiRoute: ActivatedRoute, private dataser: DataserviceService, private sharedatafilm: ShareDataService) { }
+
+
+  constructor(private actiRoute: ActivatedRoute, private dataser: DataserviceService, private sharedatafilm: ShareDataService, private router: Router) { }
+  handler: any = null;
 
 
   ngOnInit() {
@@ -61,6 +65,54 @@ export class DatveComponent implements OnInit {
     this.getInforFilm();
     this.getInformationFilm();
     this.getLichChieu();
+    this.loadStripe();
+  }
+
+  loadStripe() {
+
+    if (!window.document.getElementById('stripe-script')) {
+      var s = window.document.createElement("script");
+      s.id = "stripe-script";
+      s.type = "text/javascript";
+      s.src = "https://checkout.stripe.com/checkout.js";
+      window.document.body.appendChild(s);
+    }
+  }
+  pay(amount) {
+    const user = localStorage.getItem('localUser');
+    if (user) {
+      var handler = (<any>window).StripeCheckout.configure({
+        key: 'pk_test_aeUUjYYcx4XNfKVW60pmHTtI',
+        locale: 'auto',
+        token: function (token: any) {
+          // You can access the token ID with `token.id`.
+          // Get the token ID to your server-side code for use.
+          console.log(token);
+          alert('Token Created!!');
+          localStorage.setItem("stripe", JSON.stringify(token));
+        }
+      });
+      handler.open({
+        name: 'Thanh Toán Online',
+        description: `Vé Thường:${this.slgt} - Vé Vip:${this.slgv}`,
+        amount: Math.ceil(amount / 235),
+      });
+      setTimeout(() => {
+        const tokencheck = localStorage.getItem('stripe');
+        if (tokencheck) {
+          this.dataser.post('QuanLyDatVe/DatVe', this.ghePost)
+            .subscribe((data: any) => {
+              console.log(data);
+              alert('Book Ticket Success')
+            })
+        }
+      }, 10000);
+
+    }
+    else {
+      this.router.navigateByUrl('');
+      alert('Please! Login For Book Ticket');
+    }
   }
   getInformationFilm() {
     const uri = `QuanLyPhim/LayThongTinPhim?MaPhim=${this.iDfilm}`;
@@ -95,7 +147,6 @@ export class DatveComponent implements OnInit {
     this.dataser.get(uri).subscribe((data: any) => {
       if (data != null) {
         console.log(data);
-
         this.cinema = data;
       }
     });
@@ -199,8 +250,31 @@ export class DatveComponent implements OnInit {
     $(".btn1").removeClass("active");
 
   }
-  getStatus(status){
-    this.status=status;
-    
+  getStatus(status) {
+    this.status = status;
   }
+  getObjghe(ArrayObjghe) {
+    this.formatGheArray = [];
+    if (ArrayObjghe) {
+      for (let i = 0; i < ArrayObjghe.length; i++) {
+        let maGhe = { maGhe: ArrayObjghe[i].maGhe };
+        let giaVe = { giaVe: ArrayObjghe[i].giaVe };
+        let obj = Object.assign({}, maGhe, giaVe);
+        this.formatGheArray.push(obj);
+      }
+      if (localStorage.getItem("localUser") != null) {
+        var LocalUser = JSON.parse(localStorage.getItem("localUser"));
+      }
+      const datVe = {
+        maLichChieu: Number(this.maLC),
+        danhSachVe: this.formatGheArray,
+        taiKhoanNguoiDung: LocalUser.taiKhoan,
+      }
+      this.ghePost = datVe;
+      console.log(this.ghePost);
+    }
+
+
+  }
+
 }

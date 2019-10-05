@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   loginStatus: boolean = false;
   localUser = [];
 
-  constructor(private dataService: DataService,private router:Router) {}
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
     const token = localStorage.getItem("adminToken");
@@ -45,11 +45,12 @@ export class HeaderComponent implements OnInit {
           // alert("Logged in succesfully");
           this.loginStatus = true;
           this.localUser = data;
-          if(data.maLoaiNguoiDung=="QuanTri"){
-            localStorage.setItem('adminToken',JSON.stringify(data.accessToken));
+          if (data.maLoaiNguoiDung == "QuanTri") {
+            localStorage.setItem('adminToken', JSON.stringify(data.accessToken));
             this.router.navigate(["admin"]);
           }
           localStorage.setItem("localUser", JSON.stringify(data));
+          localStorage.setItem('localUserToken', JSON.stringify(data.accessToken))
         }
       },
       err => {
@@ -58,11 +59,18 @@ export class HeaderComponent implements OnInit {
       }
     );
   }
+  // if (localStorage.getItem('adminToken')) {
+  //   const token = JSON.parse(localStorage.getItem("adminToken"));
+  // }
+  // else {
+  //   const token = JSON.parse(localStorage.getItem("localUserToken"));
+  // }
+
 
   logout() {
     // localStorage.clear();        // 1st way to remove localStorage
     localStorage.removeItem("localUser");       // 2nd way to remove localStorage
-    this.loginStatus=false;
+    this.loginStatus = false;
   }
 
   getLocalStore() {
@@ -75,7 +83,7 @@ export class HeaderComponent implements OnInit {
   clickLogin() {
     //  $("#dropdownLogin").dropdown("toggle");
     // window.open('lead_data.php?leadid=1','myWin','width=400,height=650')
-    $("#loginDp").css({'display':'block'});
-    
+    $("#loginDp").css({ 'display': 'block' });
+
   }
 }

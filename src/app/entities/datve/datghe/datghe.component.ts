@@ -11,6 +11,7 @@ export class DatgheComponent implements OnInit {
   @Input() slgv: any;
   @Input() slgt: any; 
   @Output() status= new EventEmitter();
+  @Output() Objghe= new EventEmitter();
   mangGheDangChon: any[] = new Array();
   mangGheDangChonPhanLoai: any[] = new Array();
   cssbtnThanhToan: boolean;
@@ -66,7 +67,6 @@ export class DatgheComponent implements OnInit {
       }
     }
     else {
-     
       if (this.mangGheDangChonPhanLoai[0] && this.mangGheDangChonPhanLoai[0].nhomve.length == this.slgv) {
         conVip = true;
       }
@@ -77,7 +77,10 @@ export class DatgheComponent implements OnInit {
       this.cssbtnThanhToan = conVip && conNor;
     }
     console.log(this.cssbtnThanhToan);
+    console.log(this.mangGheDangChon);
+    
     this.status.emit(this.cssbtnThanhToan);
+    this.Objghe.emit(this.mangGheDangChon);
   }
 
 }

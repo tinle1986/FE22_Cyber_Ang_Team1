@@ -1,15 +1,15 @@
 <div class="myContainer" *ngIf="inforFilm!=null">
-    <h3 class="text-center">Quá Trình Đặt Vé</h3>
+    <!-- <h3 class="text-center">Quá Trình Đặt Vé</h3> -->
     <div class="navs">
         <ul class="nav nav-pills">
-            <li class="nav-item">
+            <li class="nav-item col-md-4">
                 <a class="nav-link active btn1" (click)='removeActive()' data-toggle="tab" data-target="#home">01. CHỌN
                     LOẠI VÉ</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item col-md-4">
                 <a class="nav-link">02. CHỌN GHẾ & THANH TOÁN</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item col-md-4">
                 <a class="nav-link">03. KẾT QUẢ ĐẶT VÉ</a>
             </li>
         </ul>
@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-md-4 inForFILM">
                 <!-- <div [style.background-image]="'url(' + photo + ')'" class="ImgFilm"></div> -->
-                <div class="ImgFilm">
+                <div class="ShowInforFilm">
                     <div class="ImgFilm">
                         <img [src]='photo' alt="Hình Phim">
                     </div>
@@ -31,18 +31,19 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="tab-content">
-                    <div class="tab-pane tab1 active" id="home">
+                <div class="tab-content" *ngIf='cinema'>
+                    <div class="tab-pane myContainer tab1 active" id="home">
                         <div class="infors" *ngIf='cinema&&informLC'>
                             <div class="container">
                                 <div class="row">
-                                    <div class="Img">
+                                    <div class="logo">
                                         <img [src]="cinema[0].logo" alt="HìnhLogo">
                                     </div>
                                     <div class="InforCinema" *ngIf='thongTinFLC'>
-                                        <p>{{thongTinFLC.thongTinRap.tenCumRap}}</p>
+                                        <p class="namebraCinema">{{thongTinFLC.thongTinRap.tenCumRap}}</p>
                                         <p>{{informLC.diaChi}}</p>
-                                        <p>{{thongTinFLC.ngayChieuGioChieu | date: 'hh:mm a'}}-{{informLC.thongTinPhim.tenRap}}
+                                        <p class="TimeAndWhere">
+                                            {{thongTinFLC.ngayChieuGioChieu | date: 'hh:mm a'}}-{{informLC.thongTinPhim.tenRap}}
                                         </p>
                                     </div>
                                 </div>
@@ -53,49 +54,83 @@
                                     </app-chonghe>
                                 </div>
                                 <hr>
-                                <p>{{this.slgt*this.moneynormal+this.slgv*this.moneyvip}}</p>
-                                <button class="btn1" data-toggle="tab" data-target="#menu1">
-                                    Chọn Ghế
-                                </button>
+                                <div class="row moneyInfor">
+                                    <div class="col-md-9">
+                                        <div class="title">
+                                            TỔNG TIỀN
+                                        </div>
+                                        <p class="money">{{this.slgt*this.moneynormal+this.slgv*this.moneyvip}}</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button class="btn1 myBtnChair" data-toggle="tab" data-target="#menu1">
+                                            Chọn Ghế
+                                        </button>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane container fade" id="menu1">
+                    <div class="tab-pane myContainer2 fade" id="menu1">
                         <div class="row" *ngIf='informLC!=null'>
-                            <div class="col-md-7 pt-3">
+                            <div class="col-md-12 pt-3">
+                                <hr class="monitor">
+                                <h6 class="text">Màn Hình</h6>
                                 <app-datghe [informLC]='informLC' [slgv]='slgv' [slgt]='slgt'
-                                    (status)='getStatus($event)'>
-
+                                    (status)='getStatus($event)' (Objghe)='getObjghe($event)'>
                                 </app-datghe>
-                            </div>
-                            <div class="col-md-5">
-                                <p>{{this.slgt}}</p>
-                                <p>{{this.slgv}}</p>
-                                <p [ngClass]="{'btn btn-danger':status}" class="btn1" data-toggle="tab"
-                                    data-target="#menu2">
-                                    Thanh Toán</p>
+                                <div class="row mySize">
+                                    <div class="col-md-3">
+                                        <p>Số Lượng Vé Thường: <span>{{this.slgt}}</span></p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p>Số Lượng Vé VIP: <span>{{this.slgv}}</span></p>
+                                    </div>
+                                    <!-- <p [ngClass]="{'btn btn-danger':status}" class="btn1" data-toggle="tab"
+                                        data-target="#menu2">
+                                        Thanh Toán</p> -->
+                                    <div class="col-md-3">
+                                        <p (click)="pay(this.slgt*this.moneynormal+this.slgv*this.moneyvip)"
+                                            [ngClass]="{'btn btn-danger':status}">Thanh Toán
+                                            {{this.slgt*this.moneynormal+this.slgv*this.moneyvip}} VNĐ</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="vip">VIP</span>
+                                        <span class="normal">Thường</span>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane container fade" id="menu2">
-                        <div class="CinemaDone">
+                        <div class="CinemaDone container-fluid">
                             <div class="row">
                                 <div class="InforTicket">
-                                    <p><span>Tên Rạp: </span>{{thongTinFLC.thongTinRap.tenRap}}</p>
-                                    <p><span>Ngày Chiếu: </span>{{thongTinFLC.ngayChieuGioChieu| date }}</p>
-                                    <p><span>Suất Chiếu: </span>{{thongTinFLC.ngayChieuGioChieu| date:'shortTime' }}
-                                    </p>
-                                    <form>
+                                    <!-- <form>
                                         <div class="row">
                                             <h6 class="pt-1">Phương Thức Thanh Toán: </h6>
-                                            <!-- Large -->
+                                            
                                             <select name="cars" class="custom-select-sm ml-2">
                                                 <option value="TTNĐ" selected>Thanh Toán Nội Địa</option>
                                                 <option value="fiat">VISA</option>
                                                 <option value="audi">MasterCard </option>
                                             </select>
                                         </div>
-                                    </form>
+                                    </form> -->
+
+                                    <!-- <ng-payment-card class="mySize" (formSaved)="processPayment(cc)">
+
+                                    </ng-payment-card> -->
+
+                                    <div class="row">
+                                        <p><span>Tên Rạp: </span>{{thongTinFLC.thongTinRap.tenRap}}</p>
+                                        <p><span>Ngày Chiếu: </span>{{thongTinFLC.ngayChieuGioChieu| date }}</p>
+                                        <p><span>Suất Chiếu:
+                                            </span>{{thongTinFLC.ngayChieuGioChieu| date:'shortTime' }}
+                                        </p>
+                                    </div>
+
                                 </div>
 
 

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { catchError, tap } from "rxjs/operators";
-import { throwError } from "rxjs";
+import { throwError, Observable } from "rxjs";
 import {
   HttpErrorResponse,
   HttpEvent,
@@ -14,9 +14,15 @@ import {
 export class AuthInterceptor implements HttpInterceptor {
   constructor() {}
 
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
+  intercept(req: HttpRequest<any>, next: HttpHandler):Observable<HttpEvent<any>> {
     // Get the auth token from the service.
-    const token = JSON.parse(localStorage.getItem("adminToken"));
+    var token = JSON.parse(localStorage.getItem("adminToken"));
+    if (token) {
+      return;
+    }
+    else{
+      token= JSON.parse(localStorage.getItem("localUserToken"));
+    }
 
     /*
     * The verbose way:

@@ -14,7 +14,7 @@ export class ItemGheComponent implements OnInit {
   ngOnInit() {
 
   }
-  datGhe() {
+  Ghe() {
     this.trangThaiChon = !this.trangThaiChon;
     const objGhe = {
       trangThaiChon: this.trangThaiChon,

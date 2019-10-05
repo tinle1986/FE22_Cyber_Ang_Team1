@@ -1,14 +1,11 @@
 <hr />
-<div class="row">
-    <h5> Vé {{listGhe.loaiGhe}}</h5>
-    <p>{{listGhe.groupCinema[0].giaVe}}</p>
-    <div class="AddGhe row ml-4">
-
-        <button [id]="i" (click)="decrement()" (click)="moneyticket()"><i class="fas fa-minus"></i></button>
-        <span>{{counter}}</span>
-       
-        <button  [id]="i" (click)="increment()" (click)="moneyticket()"><i class="fas fa-plus"></i></button>
+<div class="row soVe">
+    <h6 class="loaiVe"> Vé {{listGhe.loaiGhe}}</h6>
+    <p class="price">{{listGhe.groupCinema[0].giaVe}} VNĐ</p>
+    <div class="AddGhe row">
+        <button class="btnNuss" [id]="i" (click)="decrement()" (click)="moneyticket()"><i class="fas fa-minus"></i></button>
+        <span class="counter">{{counter}}</span>
+        <button class="btnPluss"  [id]="i" (click)="increment()" (click)="moneyticket()"><i class="fas fa-plus"></i></button>
 <!-- tại vì em làm ngFor nó hoạt động trên 1 cái -->
-
     </div>
 </div>

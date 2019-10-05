@@ -30,6 +30,7 @@
     "css-star-rating": "^1.2.4",
     "flickity": "^2.2.1",
     "jquery": "^3.4.1",
+    "ng-payment-card": "0.0.8",
     "ng-starrating": "^1.0.7",
     "ngx-bar-rating": "^1.1.0",
     "ngx-owl-carousel": "^2.0.7",
