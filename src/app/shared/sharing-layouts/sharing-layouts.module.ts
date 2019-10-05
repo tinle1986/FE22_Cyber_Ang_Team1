@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { HomePageComponent } from 'src/app/entities/home/home-page/home-page.component';
 import { SignUpPageComponent } from 'src/app/common/components/sign-up-page/sign-up-page.component';
 import { MovieZoneModule } from 'src/app/layouts/movie-zone/movie-zone.module';
+import { NowPlayingModule } from 'src/app/layouts/now-playing/now-playing.module';
+import { EventAndBlogModule } from 'src/app/layouts/event-and-blog/event-and-blog.module';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -31,6 +33,8 @@ import { MovieZoneModule } from 'src/app/layouts/movie-zone/movie-zone.module';
     Carousel02Module,
     // Carousel03Module,
     MovieZoneModule,
+    NowPlayingModule,
+    EventAndBlogModule,
     FormsModule,
     // HeaderModule,
     RouterModule

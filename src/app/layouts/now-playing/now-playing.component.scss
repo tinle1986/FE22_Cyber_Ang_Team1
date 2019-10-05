@@ -1,0 +1,113 @@
+.my-container {
+  background-color: black;
+}
+.tab-content {
+  color: white;
+}
+.nav-tabs {
+  position: relative;
+  margin-bottom: 20px;
+  .nav-item {
+    a {
+      color: #666;
+    }
+    .my-divider {
+      margin: 0 10px 0 10px;
+      color: #666;
+    }
+  }
+  border-bottom: none;
+  .nav-link {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto Condensed", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    background-color: black;
+  }
+  .nav-link.active {
+    border-color: transparent;
+    color: #fe7900 !important;
+    background-color: black;
+  }
+  .nav-link:hover {
+    border-color: transparent;
+    color: #fe7900;
+  }
+}
+.row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.my-col-20 {
+  // height: 50px;
+  width: 20%;
+  padding: 0 10px;
+  .item-wraper .item-movie-content {
+    .item-title {
+      max-height: 22px;
+      font-size: 20px;
+      font-family: "Roboto Condensed", Arial, sans-serif;
+      font-style: normal;
+      line-height: 1.1;
+      text-transform: capitalize;
+      font-weight: 700;
+      margin: 0 0 6px;
+      a {
+        color: #202020;
+        cursor: pointer;
+        outline: medium none;
+        text-decoration: none;
+        -webkit-transition: all 0.3s ease 0s;
+        -o-transition: all 0.3s ease 0s;
+        transition: all 0.3s ease 0s;
+        background-color: transparent;
+        &:hover {
+          color: #fe7900 !important;
+        }
+      }
+      
+    }
+    .item-release-date {
+      font-size: 12px;
+      color: #999999;
+    }
+  }
+  .item-wraper .item-inner {
+    position: relative;
+    .age-rate {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: inline-block;
+      padding: 8px 10px 6px 10px;
+      background: #fe7900;
+      font-family: "Roboto Condensed", sans-serif;
+      font-size: 14px;
+      color: #fff;
+      line-height: 11px;
+      text-transform: uppercase;
+    }
+    .imdb-point {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-align: center;
+      background: #fe7900;
+      font-family: "Roboto Condensed", sans-serif;
+      font-weight: bold;
+      font-size: 15px;
+      color: #fff;
+      line-height: 40px;
+      text-transform: uppercase;
+    }
+  }
+  .item-wraper .item-inner img {
+    width: 100%;
+  }
+}
