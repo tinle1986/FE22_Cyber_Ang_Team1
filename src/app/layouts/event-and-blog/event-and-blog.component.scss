@@ -1,0 +1,184 @@
+
+
+.blog-container-body {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 13px;
+  .text-header-box {
+    margin-bottom: 25px;
+    text-align: center;
+    .entry-header {
+      display: flex;
+      flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      .separator {
+        display: inline-block;
+        flex: 1 0;
+        position: relative;
+        background: url("http://demo.amytheme.com/movie/demo/multi-cinema/wp-content/themes/amy-movie/images/bg/seperator-bg-2.png")
+          repeat-x center;
+        &.separator-left::before {
+          content: "";
+          width: 150%;
+          height: 9px;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 100%;
+          margin: auto;
+          background: url("http://demo.amytheme.com/movie/demo/multi-cinema/wp-content/themes/amy-movie/images/bg/seperator-bg-2.png")
+            repeat-x center;
+        }
+        &.separator-right::after {
+          content: "";
+          width: 150%;
+          height: 9px;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 100%;
+          margin: auto;
+          background: url("http://demo.amytheme.com/movie/demo/multi-cinema/wp-content/themes/amy-movie/images/bg/seperator-bg-2.png")
+            repeat-x center;
+        }
+      }
+      .title-heading {
+        flex: 0 auto;
+        padding: 0 20px;
+        font-size: 35px;
+        font-weight: 700;
+        font-family: "Roboto Condensed", Arial, sans-serif;
+        font-style: normal;
+        line-height: 1.1;
+        color: #202020;
+        margin: 0;
+        position: relative;
+        display: inline-block;
+      }
+    }
+    .sub-header p {
+      margin: 0 0 10px;
+    }
+  }
+  .movie-blog-box {
+    .event-row {
+      &::before {
+        content: " ";
+        display: table;
+      }
+      .entry-thumb {
+        position: relative;
+        img {
+          width: auto;
+          max-width: 100%;
+          height: auto;
+        }
+        &::after {
+          background: rgba(0, 0, 0, 0.25) none repeat scroll 0 0;
+          content: "";
+          display: block;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          width: 100%;
+        }
+      }
+      .entry-item {
+        &.out {
+          .entry-content {
+            margin-top: -80px;
+            .left {
+              float: left;
+              padding-right: 15px;
+            }
+            .right {
+              float: left;
+            }
+          }
+        }
+        &.in {
+          .entry-content {
+            bottom: 0;
+            padding: 20px 35px;
+            position: absolute;
+            text-align: center;
+            display: block;
+            .entry-cat {
+              display: inline-block;
+              padding: 2px 10px;
+            }
+            .entry-title {
+              margin-top: 15px;
+            }
+          }
+        }
+        .entry-date {
+          background: #000;
+          font-weight: bold;
+          color: #fff;
+          padding: 10px;
+          text-transform: uppercase;
+          margin-bottom: 10px;
+          font-family: "Roboto Condensed", Arial, sans-serif;
+          font-style: normal;
+          span {
+            display: block;
+            line-height: 25px;
+            padding: 0 7px;
+          }
+          .d {
+            font-size: 30px;
+          }
+          .m {
+            font-size: 16px;
+          }
+        }
+        .entry-cat {
+          background: #fe7900;
+          padding: 2px 0;
+          text-align: center;
+          color: #fff;
+        }
+        .entry-comment {
+          font-size: 18px;
+          font-weight: bold;
+          margin-top: 10px;
+          text-align: center;
+          i {
+            display: block;
+            font-size: 22px;
+          }
+        }
+        .entry-title {
+          font-weight: bold;
+          font-size: 22px;
+          margin-top: 0;
+          height: 50px;
+          overflow: hidden;
+          word-wrap: break-word;
+          font-family: "Roboto Condensed", Arial, sans-serif;
+          font-style: normal;
+          margin-bottom: 10px;
+          line-height: 1.1;
+          a {
+            color: #fff;
+            cursor: pointer;
+            outline: medium none;
+            text-decoration: none;
+            -webkit-transition: all 0.3s ease 0s;
+            -o-transition: all 0.3s ease 0s;
+            transition: all 0.3s ease 0s;
+            background-color: transparent;
+          }
+        }
+        .entry-excerpt {
+          margin-top: 55px;
+          max-height: 110px;
+          overflow: hidden;
+          font-size: 15px;
+          color: #666;
+        }
+      }
+    }
+    margin-bottom: 20px;
+  }
+}
