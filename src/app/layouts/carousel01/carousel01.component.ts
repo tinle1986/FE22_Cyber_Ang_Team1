@@ -20,6 +20,7 @@ export class Carousel01Component implements OnInit {
 
   slides = Array(7).fill({});
 
+  // tslint:disable-next-line: ban-types
   options: Object = {
     clicking: true,
     sourceProp: 'src',
@@ -66,6 +67,7 @@ export class Carousel01Component implements OnInit {
   }
 
 
+  // tslint:disable-next-line: use-lifecycle-interface
   ngOnDestroy() {
     this.subMovieList.unsubscribe();
   }
