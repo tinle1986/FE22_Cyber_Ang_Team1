@@ -46,11 +46,15 @@ export class HeaderComponent implements OnInit {
           this.loginStatus = true;
           this.localUser = data;
           if (data.maLoaiNguoiDung == "QuanTri") {
+            localStorage.setItem("localAdmin", JSON.stringify(data));
             localStorage.setItem('adminToken', JSON.stringify(data.accessToken));
             this.router.navigate(["admin"]);
           }
-          localStorage.setItem("localUser", JSON.stringify(data));
-          localStorage.setItem('localUserToken', JSON.stringify(data.accessToken))
+          else{
+            localStorage.setItem("localUser", JSON.stringify(data));
+            localStorage.setItem('localUserToken', JSON.stringify(data.accessToken))
+          }
+         
         }
       },
       err => {

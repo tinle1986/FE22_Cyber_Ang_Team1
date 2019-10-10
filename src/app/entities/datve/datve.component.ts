@@ -29,6 +29,9 @@ export class DatveComponent implements OnInit {
   money: number = 0;
   slgt: number = 0;
   slgv: number = 0;
+  checkNormal: boolean = false;
+  checkVip: boolean = false;
+  checkBtnGhe: boolean = false;
   moneynormal: number = 0;
   moneyvip: number = 0;
 
@@ -88,7 +91,7 @@ export class DatveComponent implements OnInit {
           // You can access the token ID with `token.id`.
           // Get the token ID to your server-side code for use.
           console.log(token);
-          alert('Token Created!!');
+          alert('Ticket Created Wait 5s!!');
           localStorage.setItem("stripe", JSON.stringify(token));
         }
       });
@@ -106,7 +109,7 @@ export class DatveComponent implements OnInit {
               alert('Book Ticket Success')
             })
         }
-      }, 10000);
+      }, 2000);
 
     }
     else {
@@ -205,15 +208,31 @@ export class DatveComponent implements OnInit {
   }
   getMoney(e) {
     if (e.loaiGhe == 'Thuong') {
-      this.slgt = e.soluong;
-      this.moneynormal = e.money;
-
+      if (e.soluong > 0) {
+        this.slgt = e.soluong;
+        this.moneynormal = e.money;
+      }
+      else {
+        this.slgt = 0;
+        this.moneynormal = e.money;
+      }
     }
     else {
-      this.slgv = e.soluong;
-      this.moneyvip = e.money;
+      if (e.soluong > 0) {
+        this.slgv = e.soluong;
+        this.moneyvip = e.money;
+      }
+      else {
+        this.slgv = 0;
+        this.moneyvip = e.money;
+      }
     }
-    // this.money=this.slgt*this.moneynormal+this.slgv*this.moneyvip;
+    if(this.slgv+this.slgt>0){
+      this.checkBtnGhe=true;
+    }  
+    else{
+      this.checkBtnGhe=false;
+    }
   }
   // booking(objGhe) {
   //   var conVip: boolean = false;

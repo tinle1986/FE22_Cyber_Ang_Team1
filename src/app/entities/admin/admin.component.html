@@ -112,7 +112,7 @@
         <div class="row">
             <div class="col-md-8">
                 <!-- BEGIN BUTTOM THÊM MỚI -->
-                <button id="btnThemNguoiDung" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                <button id="btnThemPhim" class="btn btn-success" data-toggle="modal" data-target="#myModal1">
                     <i class="fa fa-plus mr-1"></i>
                     Thêm Mới
                 </button>
@@ -145,7 +145,7 @@
                     <th>Tùy Chỉnh</th>
                 </thead>
                 <tbody id="tblDanhSachNguoiDung">
-                    <tr *ngFor='let item of listFilm.reverse() | slice:2:16;let i =index'>
+                    <tr *ngFor='let item of listFilm.reverse() | slice:0:18;let i =index'>
                         <!-- <app-item-user [user]="item" [i]="i">
 
                         </app-item-user> -->
@@ -186,7 +186,7 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body">
-                <form  #addUser="ngForm" (ngSubmit)="submitUser(addUser.value)">
+                <form #addUser="ngForm" (ngSubmit)="submitUser(addUser.value)">
                     <div class="form-group">
                         <label>Tài khoản</label>
                         <input name="taiKhoan" class="form-control" placeholder="Nhập vào tài khoản" ngModel />
@@ -219,7 +219,63 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </form>
             </div>
-            <!-- Modal footer -->
+        </div>
+    </div>
+</div>
+<div class="modal" id="myModal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Thêm Phim</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form #addFilm="ngForm" (ngSubmit)="submitFilm(addFilm.value,imgFilm.files)">
+                    <div class="form-group">
+                        <label>Mã Phim :</label>
+                        <input name="maPhim" type="number" class="form-control" placeholder="Nhập vào số mã phim"
+                            ngModel />
+                    </div>
+                    <div class="form-group">
+                        <label>Tên Phim :</label>
+                        <input name="tenPhim" class="form-control" placeholder="Nhập vào tên phim" ngModel />
+                    </div>
+                    <div class="form-group">
+                        <label>Bí Danh Phim :</label>
+                        <input name="biDanh" class="form-control" placeholder="Nhập vào bí danh tên phim" ngModel />
+                    </div>
+                    <div class="form-group">
+                        <label>Trailer :</label>
+                        <input name="trailer" class="form-control" placeholder="Nhập vào mã embed code trên Youtube"
+                            ngModel />
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày Khởi Chiếu :</label>
+                        <input type="text" bsDatepicker id="datepicker" name="ngayKhoiChieu" ngModel />
+                    </div>
+                    <div class="form-group">
+                        <label>Hình Ảnh :</label>
+                        <input type="file" name="myFile" (change)='onFileChange($event)' #imgFilm class="form-control" placeholder="Chọn hình phim" ngModel />
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Mô Tả Phim :</label>
+                        <textarea class="form-control" rows="5" id="moTa"
+                            placeholder="Viết Những Mô Tả Nhỏ Cho Phim" name="moTa" ngModel></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Đánh Giá Phim</label>
+                        <input name="danhGia" type="number" class="form-control"
+                            placeholder="Nhập vào đánh giá của Phim chuẩn 5/5" ngModel />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </form>
+
+            </div>
 
         </div>
     </div>

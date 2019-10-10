@@ -8,7 +8,12 @@ import { Observable } from 'rxjs';
 export class GuardsGuard implements CanActivate {
   constructor(private router: Router) { }
   canActivate() {
-    return false;
+    const token = JSON.parse(localStorage.getItem("localUser"));
+    if (!token) {
+      this.router.navigate(["/admin"]);
+      return false;
+    }
+    return true;
   }
 
 }

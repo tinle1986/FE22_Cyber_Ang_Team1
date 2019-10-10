@@ -62,7 +62,7 @@
                                         <p class="money">{{this.slgt*this.moneynormal+this.slgv*this.moneyvip}}</p>
                                     </div>
                                     <div class="col-md-3">
-                                        <button class="btn1 myBtnChair" data-toggle="tab" data-target="#menu1">
+                                        <button [ngClass]="{'btn btn1 myBtnChair':checkBtnGhe==true,'disablebutton':checkBtnGhe==false}" data-toggle="tab" data-target="#menu1">
                                             Chọn Ghế
                                         </button>
                                     </div>
