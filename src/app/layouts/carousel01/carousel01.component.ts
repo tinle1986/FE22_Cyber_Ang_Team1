@@ -1,33 +1,34 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { Subscription } from "rxjs";
-import { DataService } from "src/app/shared/services/data.service";
-import { SharingData01Service } from "src/app/shared/services/sharing-data01.service";
-import { Movie } from "src/app/common/models/movie";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { DataService } from 'src/app/shared/services/data.service';
+import { SharingData01Service } from 'src/app/shared/services/sharing-data01.service';
+import { Movie } from 'src/app/common/models/movie';
 // declare var $: any;
 
 @Component({
-  selector: "app-carousel01",
-  templateUrl: "./carousel01.component.html",
-  styleUrls: ["./carousel01.component.scss"]
+  selector: 'app-carousel01',
+  templateUrl: './carousel01.component.html',
+  styleUrls: ['./carousel01.component.scss']
 })
 export class Carousel01Component implements OnInit {
   movieList: Array<Movie> = [];
   subMovieList = new Subscription();
 
-  title = "CarouselNgx";
+  title = 'CarouselNgx';
 
-  @ViewChild("carousel01", { static: false }) carousel01: any;
+  @ViewChild('carousel01', { static: false }) carousel01: any;
 
   slides = Array(7).fill({});
 
+  // tslint:disable-next-line: ban-types
   options: Object = {
     clicking: true,
-    sourceProp: "src",
+    sourceProp: 'src',
     visible: 7,
     perspective: 1,
     startSlide: 0,
     border: 3,
-    dir: "ltr",
+    dir: 'ltr',
     width: 200,
     height: 300,
     space: 130,
@@ -45,7 +46,7 @@ export class Carousel01Component implements OnInit {
   }
 
   getMovieList() {
-    const uri = "QuanLyPhim/LayDanhSachPhim?maNhom=GP09";
+    const uri = 'QuanLyPhim/LayDanhSachPhim?maNhom=GP09';
     this.subMovieList = this.dataService.get(uri).subscribe((data: any) => {
       if (data !== null) {
         const step = Math.floor(Math.random() * 7) + 1;
@@ -66,6 +67,7 @@ export class Carousel01Component implements OnInit {
   }
 
 
+  // tslint:disable-next-line: use-lifecycle-interface
   ngOnDestroy() {
     this.subMovieList.unsubscribe();
   }

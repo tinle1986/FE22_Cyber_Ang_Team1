@@ -1,8 +1,8 @@
-import { Component, OnInit } from "@angular/core";
-import { Movie } from "src/app/common/models/movie";
-import { Subscription } from "rxjs";
-import { SharingData01Service } from "src/app/shared/services/sharing-data01.service";
-import { StarRatingComponent } from "ng-starrating";
+import { Component, OnInit } from '@angular/core';
+import { Movie } from 'src/app/common/models/movie';
+import { Subscription } from 'rxjs';
+import { SharingData01Service } from 'src/app/shared/services/sharing-data01.service';
+import { StarRatingComponent } from 'ng-starrating';
 
 declare var $: any;
 
@@ -17,9 +17,9 @@ const ratings = {
 const starTotal = 5;
 
 @Component({
-  selector: "app-carousel02",
-  templateUrl: "./carousel02.component.html",
-  styleUrls: ["./carousel02.component.scss"]
+  selector: 'app-carousel02',
+  templateUrl: './carousel02.component.html',
+  styleUrls: ['./carousel02.component.scss']
 })
 export class Carousel02Component implements OnInit {
   movieList: Array<Movie> = []; // khai báo mảng ds phim rỗng, obj là Movie

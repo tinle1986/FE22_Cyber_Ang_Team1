@@ -4,6 +4,9 @@
   padding-right: 15px;
   margin: auto;
 }
+.navbar-nav .nav-link {
+  color: black;
+}
 .navbar-nav li:not(:first-child) {
   margin-left: 2rem !important;
 }
@@ -38,7 +41,7 @@
 
     // quy định màu menu dropdown
     .dropdown-menu {
-      top: 120%;
+      top: 110%;
       // background-color: black;
       background-color: rgba(255, 255, 255, 0.8);
       border-bottom: 3px solid #fe7900;

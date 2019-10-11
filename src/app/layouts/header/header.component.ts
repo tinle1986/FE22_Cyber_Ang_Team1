@@ -10,12 +10,12 @@ declare var $: any;
 // declare var $: any;
 
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.scss"]
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  loginStatus: boolean = false;
+  loginStatus = false;
   localUser = [];
 
   constructor(private dataService: DataService, private router: Router) { }
@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
         // console.log(data);
 
         if (data === null) {
-          alert("Tài khoản không tồn tại.");
+          alert('Tài khoản không tồn tại.');
         } else {
           // alert("Logged in succesfully");
           this.loginStatus = true;
@@ -73,13 +73,13 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     // localStorage.clear();        // 1st way to remove localStorage
-    localStorage.removeItem("localUser");       // 2nd way to remove localStorage
+    localStorage.removeItem('localUser');       // 2nd way to remove localStorage
     this.loginStatus = false;
   }
 
   getLocalStore() {
-    if (localStorage.getItem("localUser") != null) {
-      this.localUser = JSON.parse(localStorage.getItem("localUser"));
+    if (localStorage.getItem('localUser') != null) {
+      this.localUser = JSON.parse(localStorage.getItem('localUser'));
       this.loginStatus = true;
       // console.log(this.localUser);
     }
