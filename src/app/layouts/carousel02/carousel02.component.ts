@@ -3,7 +3,7 @@ import { Movie } from 'src/app/common/models/movie';
 import { Subscription } from 'rxjs';
 import { SharingData01Service } from 'src/app/shared/services/sharing-data01.service';
 import { StarRatingComponent } from 'ng-starrating';
-
+import { Router} from '@angular/router'
 declare var $: any;
 
 const ratings = {
@@ -31,7 +31,7 @@ export class Carousel02Component implements OnInit {
   slideList: Array<any> = [this.slide1, this.slide2, this.slide3];
   subMovieList = new Subscription(); // biến quản lý theo dõi data
 
-  constructor(private sharingData01Service: SharingData01Service) {}
+  constructor(private sharingData01Service: SharingData01Service,private router:Router) {}
 
   ngOnInit() {
     this.getMovieFromStore();
@@ -53,6 +53,8 @@ export class Carousel02Component implements OnInit {
     // const step = Math.floor(Math.random() * 4) + 1;
     this.subMovieList = this.sharingData01Service.sharingMovieLst.subscribe(
       (data: any) => {
+        console.log(data);
+        
         if (data.length > 0) {
           this.movieList = data;
           this.slideList[0][0] = this.movieList[0];
@@ -70,6 +72,11 @@ export class Carousel02Component implements OnInit {
         }
       }
     );
+  }
+  chitiet(maPhim,tenPhim){
+    console.log(maPhim,tenPhim);
+    
+    this.router.navigate(["/chitietphim"],{queryParams:{id:maPhim,tenPhim:tenPhim,}});
   }
 
   // giải phóng biến theo dõi gọi data

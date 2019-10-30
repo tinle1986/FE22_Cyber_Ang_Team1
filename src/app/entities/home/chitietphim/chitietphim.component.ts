@@ -68,6 +68,8 @@ export class ChitietphimComponent implements OnInit {
       this.inforLC = data;
       console.log(data);
       this.cinemamainplay = data['heThongRapChieu'];
+      console.log(this.cinemamainplay);
+      
       this.getRapPhim();
       this.idTrailer = "https://www.youtube.com/embed/" + this.getId(data.trailer);
       if (this.sanitizer.bypassSecurityTrustResourceUrl(this.idTrailer)!=null) {
@@ -84,7 +86,6 @@ export class ChitietphimComponent implements OnInit {
         return this.cinemamainplay.find((item2) => item2.maHeThongRap === item1.maHeThongRap)
       });
     });
-
   }
 
   getId(url) {

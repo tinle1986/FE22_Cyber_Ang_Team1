@@ -13,7 +13,7 @@ export class GuardsGuard implements CanActivate {
       this.router.navigate(["/admin"]);
       return false;
     }
-    return true;
+    return true
   }
 
 }
