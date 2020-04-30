@@ -29,7 +29,7 @@
     "bootstrap": "^4.4.1",
     "css-star-rating": "^1.2.4",
     "flickity": "^2.2.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ng-payment-card": "0.0.8",
     "ng-starrating": "^1.0.11",
     "ngx-bar-rating": "^1.1.0",
